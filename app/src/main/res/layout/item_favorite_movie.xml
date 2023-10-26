@@ -5,16 +5,18 @@
 
     <data>
 
-        <import type="com.pinto.mymovieappkt.utils.Detail" />
+        <import type="com.pinto.mymovieappkt.utils.ExtensionsKt" />
 
         <import type="com.pinto.mymovieappkt.utils.ImageQuality" />
 
-        <import type="com.pinto.mymovieappkt.utils.ExtensionsKt" />
+        <import type="com.pinto.mymovieappkt.utils.Detail" />
 
         <variable
             name="movie"
             type="com.pinto.mymovieappkt.domain.model.FavoriteMovie" />
+
     </data>
+
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -25,10 +27,9 @@
             detailImageUrl="@{movie.posterPath}"
             detailType="@{Detail.MOVIE}"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="?attr/selectableItemBackground"
             android:clipToPadding="false"
-            android:orientation="horizontal"
             android:paddingStart="@dimen/start_margin"
             android:paddingTop="@dimen/top_margin_small"
             android:paddingEnd="@dimen/end_margin"
@@ -47,7 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_baseline_movie_24"/>
+                    tools:srcCompat="@drawable/ic_baseline_movie_24"></ImageView>
 
             </androidx.cardview.widget.CardView>
 
@@ -77,7 +78,7 @@
                     android:fontFamily="sans-serif-light"
                     android:text="@{ExtensionsKt.formatDate(movie.releaseDate).empty ? @string/n_a : ExtensionsKt.formatDate(movie.releaseDate)}"
                     app:drawableStartCompat="@drawable/ic_baseline_calendar_today_14"
-                    tools:text="24 Oktober 2023" />
+                    tools:text="26 Oktober, 2023" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -85,10 +86,11 @@
                     android:layout_marginBottom="4dp"
                     android:drawablePadding="@dimen/textview_drawable_padding"
                     android:fontFamily="sans-serif-light"
-                    android:text="@{ExtensionsKt.round(movie.voteAverage) + @string/item_count_s(ExtensionsKt.thousandsSeparator(movie.voteCount, context))}"
+                    android:text="@{ExtensionsKt.round(movie.voteAverage) + @string/item_count_s(ExtensionsKt.thousandsSeparator(movie.voteCount,context))}"
                     app:drawableStartCompat="@drawable/ic_baseline_star_rate_14"
                     app:drawableTint="@color/day_night"
                     tools:text="0.0  (0)" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -99,8 +101,8 @@
                     app:drawableStartCompat="@drawable/ic_baseline_access_time_14"
                     tools:text="0hr 0min" />
 
-
             </LinearLayout>
+
 
         </LinearLayout>
 
@@ -113,5 +115,6 @@
             android:padding="@dimen/padding_close_button"
             android:src="@drawable/ic_baseline_close_24"
             app:tint="@color/day_night" />
+
     </FrameLayout>
 </layout>

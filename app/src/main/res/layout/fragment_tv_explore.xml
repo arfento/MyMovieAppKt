@@ -92,12 +92,14 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPopular"
-                    style="@style/hRecyclerView"
+                    style="@style/RecyclerView"
                     fixedSize="@{true}"
                     isNested="@{true}"
+
                     loadMore="@{viewModel::onLoadMore}"
                     shouldLoadMore="@{true}"
-                    type="@{Constants.LIST_ID_POPULAR}" />
+                    type="@{Constants.LIST_ID_POPULAR}"
+                    tools:listitem="@layout/item_tv" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
 
@@ -122,10 +124,11 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvTopRated"
-                    style="@style/hRecyclerView"
+                    style="@style/RecyclerView"
                     fixedSize="@{true}"
                     isNested="@{true}"
                     loadMore="@{viewModel::onLoadMore}"
+                    tools:listitem="@layout/item_tv"
                     shouldLoadMore="@{true}"
                     type="@{Constants.LIST_ID_TOP_RATED}" />
 
@@ -172,13 +175,13 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvNowPlaying"
-                    style="@style/hRecyclerView"
+                    style="@style/RecyclerView"
                     fixedSize="@{true}"
                     isNested="@{true}"
+                    tools:listitem="@layout/item_tv"
                     loadMore="@{viewModel::onLoadMore}"
                     shouldLoadMore="@{true}"
                     type="@{Constants.LIST_ID_NOW_PLAYING}" />
-
 
 
             </LinearLayout>

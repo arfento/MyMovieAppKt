@@ -1,13 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.screen.favorites.favorite_movies.FavoriteMoviesFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
+    <data>
+
+        <import type="com.pinto.mymovieappkt.utils.Constants" />
+
+        <import type="com.pinto.mymovieappkt.utils.Content" />
+
+        <import type="com.pinto.mymovieappkt.utils.Detail" />
+
+        <variable
+            name="fragment"
+            type="com.pinto.mymovieappkt.presentation.screen.favorites.favorite_movies.FavoriteMoviesFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.pinto.mymovieappkt.presentation.screen.favorites.favorite_movies.FavoriteMoviesViewModel" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:context=".presentation.screen.favorites.favorite_movies.FavoriteMoviesFragment">
 
-</FrameLayout>
+        <TextView
+            isVisible="@{viewModel.favoriteMovies.size() == 0}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_favorites_list_movie"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavoriteMovies"
+            fixedSize="@{true}"
+            isVisible="@{viewModel.favoriteMovies.size() != 0}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adapter="@{fragment.adapterFavorites}"
+            android:orientation="vertical"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_favorite_movie">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

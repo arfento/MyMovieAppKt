@@ -1,4 +1,4 @@
-package com.borabor.movieapp.domain.model
+package com.pinto.mymovieappkt.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

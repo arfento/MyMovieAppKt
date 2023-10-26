@@ -1,7 +1,12 @@
 package com.pinto.mymovieappkt.presentation.screen.search
 
-import androidx.lifecycle.ViewModel
+import com.pinto.mymovieappkt.domain.usecase.GetSearchResults
+import com.pinto.mymovieappkt.presentation.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SearchViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+@HiltViewModel
+
+class SearchViewModel @Inject constructor(private val getSearchResults: GetSearchResults) : BaseViewModel() {
+
 }

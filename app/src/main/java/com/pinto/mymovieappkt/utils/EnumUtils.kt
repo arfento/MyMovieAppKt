@@ -31,3 +31,26 @@ enum class Content : Parcelable {
     SEARCH,
     GENRE
 }
+
+enum class ExternalPlatform(
+    val url: String? = null,
+    val packageName: String? = null
+) {
+    IMDB(
+        url = "https://www.imdb.com/title/",
+        packageName = "com.imdb.mobile"
+    ),
+    FACEBOOK(
+        url = "https://www.facebook.com/",
+        packageName = "com.facebook.katana"
+    ),
+    INSTAGRAM(
+        url = "https://www.instagram.com/",
+        packageName = "com.instagram.android"
+    ),
+    TWITTER(
+        url = "https://twitter.com/",
+        packageName = "com.twitter.android"
+    ),
+    HOMEPAGE
+}

@@ -6,9 +6,9 @@ plugins {
     id ("kotlin-kapt")
     id ("kotlin-parcelize")
     id ("dagger.hilt.android.plugin")
-    id ("androidx.navigation.safeargs")
+    id ("androidx.navigation.safeargs.kotlin")
     id ("org.jetbrains.kotlin.android")
-    
+
 }
 
 android {
@@ -23,6 +23,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+//        kapt {
+//            arguments {
+//                arg("room.schemaLocation", "$projectDir/schemas")
+//            }
+//        }
         val tmdbKey: String = gradleLocalProperties(rootDir).getProperty("TMDB_API_KEY") ?: ""
         buildConfigField("String", "TMDB_API_KEY", "\"$tmdbKey\"")
         val youtubeKey: String = gradleLocalProperties(rootDir).getProperty("YOUTUBE_API_KEY") ?: ""
@@ -41,23 +47,19 @@ android {
 
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        buildConfig = true
-        viewBinding = true
-    }
+
     dataBinding {
         enable = true
     }
 
     kapt {
-        correctErrorTypes = true
+        correctErrorTypes= true
     }
+
+
     kotlin {
         jvmToolchain(17)
     }
@@ -77,9 +79,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //Navigation
-    val nav_version = "2.6.0"
-    implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
+    val navVersion = "2.6.0"
+    implementation ("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation ("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     //Coroutines
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
@@ -93,9 +95,9 @@ dependencies {
     kapt ("com.google.dagger:hilt-compiler:$hiltVersion")
 
     //Room
-    val room_version = "2.6.0"
-    implementation ("androidx.room:room-ktx:$room_version")
-    kapt ("androidx.room:room-compiler:$room_version")
+    val roomVersion = "2.6.0"
+    implementation ("androidx.room:room-ktx:$roomVersion")
+    kapt ("androidx.room:room-compiler:$roomVersion")
 
     //DataStore
     implementation ("androidx.datastore:datastore-preferences:1.0.0")

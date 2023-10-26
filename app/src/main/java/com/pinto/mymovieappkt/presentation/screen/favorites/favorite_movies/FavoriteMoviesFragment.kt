@@ -1,32 +1,49 @@
 package com.pinto.mymovieappkt.presentation.screen.favorites.favorite_movies
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.pinto.mymovieappkt.R
+import com.pinto.mymovieappkt.databinding.FragmentFavoriteMoviesBinding
+import com.pinto.mymovieappkt.domain.model.FavoriteMovie
+import com.pinto.mymovieappkt.presentation.adapter.FavoriteMovieAdapter
+import com.pinto.mymovieappkt.presentation.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class FavoriteMoviesFragment : Fragment() {
+@AndroidEntryPoint
+class FavoriteMoviesFragment :
+    BaseFragment<FragmentFavoriteMoviesBinding>(R.layout.fragment_favorite_movies) {
 
-    companion object {
-        fun newInstance() = FavoriteMoviesFragment()
+    override val viewModel: FavoriteMoviesViewModel by viewModels()
+
+    val adapterFavorites = FavoriteMovieAdapter { removeMovie(it) }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        manageRecyclerViewAdapterLifecycle(binding.rvFavoriteMovies)
+        collectFlows(listOf(::collectFavoriteMovies))
     }
 
-    private lateinit var viewModel: FavoriteMoviesViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.fragment_favorite_movies, container, false)
+    private fun removeMovie(movie: FavoriteMovie) {
+        viewModel.removeMovieFromFavorites(movie)
+        showSnackbar(
+            message = getString(R.string.snackbar_removed_item),
+            actionText = getString(R.string.snackbar_action_undo),
+            anchor = true
+        ) {
+            viewModel.addMovieToFavorites(movie)
+        }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FavoriteMoviesViewModel::class.java)
-        // TODO: Use the ViewModel
+    private suspend fun collectFavoriteMovies() {
+        viewModel.favoriteMovies.collect { favoriteMovies ->
+            adapterFavorites.submitList(favoriteMovies)
+        }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.fetchFavoriteMovies()
+    }
 }

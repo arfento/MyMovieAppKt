@@ -93,12 +93,13 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPopular"
-                    style="@style/hRecyclerView"
+                    style="@style/RecyclerView"
                     fixedSize="@{true}"
                     isNested="@{true}"
                     loadMore="@{viewModel::onLoadMore}"
                     shouldLoadMore="@{true}"
-                    type="@{Constants.LIST_ID_POPULAR}" />
+                    type="@{Constants.LIST_ID_POPULAR}"
+                    tools:listitem="@layout/item_movie" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
 
@@ -123,12 +124,14 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvTopRated"
-                    style="@style/hRecyclerView"
+                    style="@style/RecyclerView"
                     fixedSize="@{true}"
                     isNested="@{true}"
                     loadMore="@{viewModel::onLoadMore}"
                     shouldLoadMore="@{true}"
-                    type="@{Constants.LIST_ID_TOP_RATED}" />
+
+                    type="@{Constants.LIST_ID_TOP_RATED}"
+                    tools:listitem="@layout/item_movie" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
 
@@ -174,12 +177,14 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvNowPlaying"
-                    style="@style/hRecyclerView"
+                    style="@style/RecyclerView"
                     fixedSize="@{true}"
                     isNested="@{true}"
+
                     loadMore="@{viewModel::onLoadMore}"
                     shouldLoadMore="@{true}"
-                    type="@{Constants.LIST_ID_NOW_PLAYING}" />
+                    type="@{Constants.LIST_ID_NOW_PLAYING}"
+                    tools:listitem="@layout/item_movie" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
 
@@ -204,17 +209,20 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvUpcoming"
-                    style="@style/hRecyclerView"
+                    style="@style/RecyclerView"
                     fixedSize="@{true}"
                     isNested="@{true}"
                     loadMore="@{viewModel::onLoadMore}"
+
                     shouldLoadMore="@{true}"
-                    type="@{Constants.LIST_ID_UPCOMING}" />
+                    type="@{Constants.LIST_ID_UPCOMING}"
+                    tools:listitem="@layout/item_movie" />
 
 
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
+
         <com.google.android.material.progressindicator.LinearProgressIndicator
             style="@style/Loading"
             isVisible="@{viewModel.uiState.loading}" />

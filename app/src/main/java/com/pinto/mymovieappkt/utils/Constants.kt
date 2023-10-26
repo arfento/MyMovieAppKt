@@ -1,6 +1,9 @@
 package com.pinto.mymovieappkt.utils
 
 object Constants {
+    const val DETAIL_ID = "id"
+
+
     const val LIST_ID_POPULAR = "popular"
     const val LIST_ID_TOP_RATED = "top_rated"
     const val LIST_ID_NOW_PLAYING = "now_playing"
@@ -22,4 +25,10 @@ object Constants {
     const val PERSON_TV_CREDITS_LIST = "personTvCreditsList"
     const val MOVIE_RECOMMENDATIONS_LIST = "movieRecommendationsList"
     const val TV_RECOMMENDATIONS_LIST = "tvRecommendationsList"
+
+    const val ILLEGAL_ARGUMENT_DETAIL_TYPE = "Invalid detail type"
+    const val ILLEGAL_ARGUMENT_FRAGMENT_TYPE = "Invalid fragment type"
+
+    const val SEASON_NUMBER = "seasonNumber"
+    const val EPISODE_NUMBER = "episodeNumber"
 }

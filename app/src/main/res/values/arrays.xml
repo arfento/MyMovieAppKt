@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string-array name="airing_tvs_time_periods">
         <item>@string/title_airing_day</item>
         <item>@string/title_airing_week</item>

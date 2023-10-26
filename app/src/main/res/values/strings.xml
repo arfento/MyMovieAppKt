@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyMovieAppKt</string>
+    <string name="app_name">Movie App</string>
 
     <string name="title_bottom_nav_bar_1">Home</string>
     <string name="title_bottom_nav_bar_2">Search</string>
@@ -216,6 +216,4 @@
     <string name="united_states">United States,US</string>
     <string name="uruguay">Uruguay,UY</string>
     <string name="vietnam">Vietnam,VN</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
