@@ -31,4 +31,7 @@ object Constants {
 
     const val SEASON_NUMBER = "seasonNumber"
     const val EPISODE_NUMBER = "episodeNumber"
+
+    const val IMAGE_POSITION = "imagePosition"
+
 }

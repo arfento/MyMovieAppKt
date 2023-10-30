@@ -21,5 +21,33 @@
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search" />
 
+    //fullscreen
+    <fragment
+        android:id="@+id/fullscreenImageFragment"
+        android:name="com.pinto.mymovieappkt.presentation.screen.fullscreen_image.FullscreenImageFragment"
+        android:label="FullscreenImageFragment">
+        <argument
+            android:name="imageList"
+            app:argType="com.pinto.mymovieappkt.domain.model.Image[]" />
+        <argument
+            android:name="imagePosition"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_fullscreenImageFragment"
+        app:destination="@id/fullscreenImageFragment" />
+
+    <fragment
+        android:id="@+id/seeAllFragment"
+        android:name="com.pinto.mymovieappkt.presentation.screen.see_all.SeeAllFragment"
+        android:label="SeeAllFragment" />
+    <fragment
+        android:id="@+id/personDetailsFragment"
+        android:name="com.pinto.mymovieappkt.presentation.screen.person_details.PersonDetailsFragment"
+        android:label="PersonDetailsFragment">
+
+
+    </fragment>
+
 
 </navigation>

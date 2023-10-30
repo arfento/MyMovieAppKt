@@ -28,4 +28,6 @@ abstract class BaseViewModel : ViewModel() {
         _uiState.value = UiState.loadingState(isInitial)
         action()
     }
+
+
 }

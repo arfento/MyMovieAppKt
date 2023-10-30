@@ -3,8 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<data>
+    <data>
 
+        <import type="com.pinto.mymovieappkt.utils.Content" />
+
+        <import type="com.pinto.mymovieappkt.utils.Detail" />
+
+        <variable
+            name="fragment"
+            type="com.pinto.mymovieappkt.presentation.screen.search.SearchFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.pinto.mymovieappkt.presentation.screen.search.SearchViewModel" />
     </data>
 
     <LinearLayout
@@ -13,10 +24,12 @@
         android:orientation="vertical"
         tools:context=".presentation.screen.search.SearchFragment">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+            android:layout_height="wrap_content">
 
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </layout>

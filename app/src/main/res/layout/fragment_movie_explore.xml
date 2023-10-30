@@ -48,7 +48,8 @@
                         android:id="@+id/vpTrendings"
                         isNested="@{true}"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:adapter="@{fragment.adapterTrending}" />
 
                     <androidx.cardview.widget.CardView
                         style="@style/TitleParent"
@@ -99,6 +100,7 @@
                     loadMore="@{viewModel::onLoadMore}"
                     shouldLoadMore="@{true}"
                     type="@{Constants.LIST_ID_POPULAR}"
+                    android:adapter="@{fragment.adapterPopular}"
                     tools:listitem="@layout/item_movie" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
@@ -129,8 +131,8 @@
                     isNested="@{true}"
                     loadMore="@{viewModel::onLoadMore}"
                     shouldLoadMore="@{true}"
-
                     type="@{Constants.LIST_ID_TOP_RATED}"
+                    android:adapter="@{fragment.adapterTopRated}"
                     tools:listitem="@layout/item_movie" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
@@ -180,10 +182,10 @@
                     style="@style/RecyclerView"
                     fixedSize="@{true}"
                     isNested="@{true}"
-
                     loadMore="@{viewModel::onLoadMore}"
                     shouldLoadMore="@{true}"
                     type="@{Constants.LIST_ID_NOW_PLAYING}"
+                    android:adapter="@{fragment.adapterNowPlaying}"
                     tools:listitem="@layout/item_movie" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
@@ -216,6 +218,7 @@
 
                     shouldLoadMore="@{true}"
                     type="@{Constants.LIST_ID_UPCOMING}"
+                    android:adapter="@{fragment.adapterUpcoming}"
                     tools:listitem="@layout/item_movie" />
 
 

@@ -47,7 +47,8 @@
                         android:id="@+id/vpTrendings"
                         isNested="@{true}"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:adapter="@{fragment.adapterTrending}" />
 
                     <androidx.cardview.widget.CardView
                         style="@style/TitleParent"
@@ -99,6 +100,7 @@
                     loadMore="@{viewModel::onLoadMore}"
                     shouldLoadMore="@{true}"
                     type="@{Constants.LIST_ID_POPULAR}"
+                    android:adapter="@{fragment.adapterPopular}"
                     tools:listitem="@layout/item_tv" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
@@ -128,9 +130,10 @@
                     fixedSize="@{true}"
                     isNested="@{true}"
                     loadMore="@{viewModel::onLoadMore}"
-                    tools:listitem="@layout/item_tv"
                     shouldLoadMore="@{true}"
-                    type="@{Constants.LIST_ID_TOP_RATED}" />
+                    type="@{Constants.LIST_ID_TOP_RATED}"
+                    android:adapter="@{fragment.adapterTopRated}"
+                    tools:listitem="@layout/item_tv" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
 
@@ -144,12 +147,10 @@
 
                     <androidx.cardview.widget.CardView
                         style="@style/SpinnerParent"
-                        android:layout_width="0dp"
+                        android:layout_width="140dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView2"
                         app:layout_constraintStart_toEndOf="@+id/textView"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteY="1dp">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <Spinner
                             android:id="@+id/spAiring"
@@ -174,14 +175,16 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvNowPlaying"
+                    android:id="@+id/rvAiring"
                     style="@style/RecyclerView"
                     fixedSize="@{true}"
                     isNested="@{true}"
-                    tools:listitem="@layout/item_tv"
                     loadMore="@{viewModel::onLoadMore}"
                     shouldLoadMore="@{true}"
-                    type="@{Constants.LIST_ID_NOW_PLAYING}" />
+                    type="@{viewModel.airingTime}"
+                    android:layout_marginBottom="@dimen/recyclerview_bottom_margin"
+                    android:adapter="@{fragment.adapterAiring}"
+                    tools:listitem="@layout/item_tv" />
 
 
             </LinearLayout>

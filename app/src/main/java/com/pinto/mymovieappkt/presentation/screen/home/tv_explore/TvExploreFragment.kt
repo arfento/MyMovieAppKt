@@ -29,7 +29,7 @@ class TvExploreFragment : BaseFragment<FragmentTvExploreBinding>(R.layout.fragme
         manageRecyclerViewAdapterLifecycle(
             binding.rvPopular,
             binding.rvTopRated,
-            binding.rvNowPlaying,
+            binding.rvAiring,
         )
 
         setupSpinner()

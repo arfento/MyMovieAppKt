@@ -1,34 +1,34 @@
 package com.pinto.mymovieappkt.presentation.screen.search
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.pinto.mymovieappkt.R
+import com.pinto.mymovieappkt.databinding.FragmentSearchBinding
+import com.pinto.mymovieappkt.presentation.adapter.MovieAdapter
+import com.pinto.mymovieappkt.presentation.adapter.PersonAdapter
+import com.pinto.mymovieappkt.presentation.adapter.TvAdapter
+import com.pinto.mymovieappkt.presentation.base.BaseFragment
+import com.pinto.mymovieappkt.presentation.base.BaseViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchFragment : Fragment() {
+class SearchFragment : BaseFragment<FragmentSearchBinding>(R.layout.fragment_search) {
 
-    companion object {
-        fun newInstance() = SearchFragment()
+    override val viewModel: BaseViewModel? by viewModels()
+
+    val adapterMovies by lazy { MovieAdapter() }
+    val adapterTvs by lazy { TvAdapter() }
+    val adapterPeople by lazy { PersonAdapter() }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        manageRecyclerViewAdapterLifecycle(
+
+        )
     }
 
-    private lateinit var viewModel: SearchViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.fragment_search, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }
