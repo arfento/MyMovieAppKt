@@ -21,7 +21,7 @@
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search" />
 
-    //fullscreen
+    <!--fullscreen-->
     <fragment
         android:id="@+id/fullscreenImageFragment"
         android:name="com.pinto.mymovieappkt.presentation.screen.fullscreen_image.FullscreenImageFragment"
@@ -37,10 +37,81 @@
         android:id="@+id/action_global_fullscreenImageFragment"
         app:destination="@id/fullscreenImageFragment" />
 
+    <!--see all-->
     <fragment
         android:id="@+id/seeAllFragment"
         android:name="com.pinto.mymovieappkt.presentation.screen.see_all.SeeAllFragment"
-        android:label="SeeAllFragment" />
+        android:label="SeeAllFragment">
+        <argument
+            android:name="contentType"
+            app:argType="com.pinto.mymovieappkt.utils.Content" />
+        <argument
+            android:name="detailType"
+            android:defaultValue="@null"
+            app:argType="com.pinto.mymovieappkt.utils.Detail"
+            app:nullable="true" />
+        <argument
+            android:name="genreId"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="listId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="backgroundColor"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="region"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="videoList"
+            android:defaultValue="@null"
+            app:argType="com.pinto.mymovieappkt.domain.model.Video[]"
+            app:nullable="true" />
+        <argument
+            android:name="castList"
+            android:defaultValue="@null"
+            app:argType="com.pinto.mymovieappkt.domain.model.Person[]"
+            app:nullable="true" />
+        <argument
+            android:name="imageList"
+            android:defaultValue="@null"
+            app:argType="com.pinto.mymovieappkt.domain.model.Image[]"
+            app:nullable="true" />
+        <argument
+            android:name="personMovieCreditsList"
+            android:defaultValue="@null"
+            app:argType="com.pinto.mymovieappkt.domain.model.Movie[]"
+            app:nullable="true" />
+        <argument
+            android:name="personTvCreditsList"
+            android:defaultValue="@null"
+            app:argType="com.pinto.mymovieappkt.domain.model.Tv[]"
+            app:nullable="true" />
+        <argument
+            android:name="movieRecommendationsList"
+            android:defaultValue="@null"
+            app:argType="com.pinto.mymovieappkt.domain.model.Movie[]"
+            app:nullable="true" />
+        <argument
+            android:name="tvRecommendationsList"
+            android:defaultValue="@null"
+            app:argType="com.pinto.mymovieappkt.domain.model.Tv[]"
+            app:nullable="true" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_seeAllFragment"
+        app:destination="@id/seeAllFragment" />
+
+
     <fragment
         android:id="@+id/personDetailsFragment"
         android:name="com.pinto.mymovieappkt.presentation.screen.person_details.PersonDetailsFragment"
@@ -48,6 +119,5 @@
 
 
     </fragment>
-
 
 </navigation>

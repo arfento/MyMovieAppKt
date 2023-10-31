@@ -28,8 +28,262 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/ivBack"
+                isVisible="@{viewModel.isSearchInitialized}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/start_margin"
+                android:layout_marginEnd="@dimen/end_margin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:onClick="@{() -> fragment.clearSearch()}"
+                android:src="?attr/homeAsUpIndicator"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="16dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivBack"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="@string/search_query_hint" />
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/linearProgressIndicator"
+                style="@style/Loading"
+                isVisible="@{viewModel.uiState.loading &amp;&amp; !viewModel.query.empty}"
+                android:layout_gravity="bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                isVisible="@{viewModel.query.empty}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    style="@style/TitleParent"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="@dimen/bottom_margin">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        style="@style/TitleDayNight"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="@string/title_genres" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView"
+                        style="@style/SpinnerParent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Spinner
+                            android:id="@+id/spMediaType"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:entries="@array/media_type" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/day_night"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/cardView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvGenres"
+                    fixedSize="@{true}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingStart="@dimen/start_margin"
+                    android:paddingEnd="@dimen/end_margin"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2" />
+
+            </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                isVisible="@{viewModel.uiState.success &amp;&amp; !viewModel.query.empty}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/bottom_margin_large">
+
+
+                    </FrameLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            style="@style/TitleDayNight"
+                            android:text="@string/title_movies"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.movieTotalResults)}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/textView2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            contentType="@{Content.SEARCH}"
+                            isVisible="@{viewModel.movieTotalResults > 3}"
+                            seeAllDetailType="@{Detail.MOVIE}"
+                            stringId="@{viewModel.query}"
+                            title="@{@string/title_see_all_search(viewModel.query, viewModel.movieTotalResults)}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvMovies"
+                        style="@style/RecyclerView"
+                        fixedSize="@{true}"
+                        isNested="@{true}"
+                        loadMore="@{viewModel::onLoadMore}"
+                        shouldLoadMore="@{true}"
+                        type="@{Detail.MOVIE}"
+                        android:adapter="@{fragment.adapterMovies}"
+                        tools:listitem="@layout/item_movie" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            style="@style/TitleDayNight"
+                            android:text="@string/title_tv_shows"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.tvTotalResults)}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/textView3"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            contentType="@{Content.SEARCH}"
+                            isVisible="@{viewModel.tvTotalResults > 3}"
+                            seeAllDetailType="@{Detail.TV}"
+                            stringId="@{viewModel.query}"
+                            title="@{@string/title_see_all_search(viewModel.query, viewModel.tvTotalResults)}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvTvs"
+                        style="@style/RecyclerView"
+                        fixedSize="@{true}"
+                        isNested="@{true}"
+                        loadMore="@{viewModel::onLoadMore}"
+                        shouldLoadMore="@{true}"
+                        type="@{Detail.TV}"
+                        android:adapter="@{fragment.adapterTvs}"
+                        tools:listitem="@layout/item_tv" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout style="@style/TitleParent">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            style="@style/TitleDayNight"
+                            android:text="@string/title_people"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.personTotalResults)}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/textView4"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/SeeAll"
+                            contentType="@{Content.SEARCH}"
+                            isVisible="@{viewModel.tvTotalResults > 3}"
+                            seeAllDetailType="@{Detail.PERSON}"
+                            stringId="@{viewModel.query}"
+                            title="@{@string/title_see_all_search(viewModel.query, viewModel.personTotalResults)}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvPeople"
+                        style="@style/RecyclerView"
+                        fixedSize="@{true}"
+                        isNested="@{true}"
+                        loadMore="@{viewModel::onLoadMore}"
+                        shouldLoadMore="@{true}"
+                        type="@{Detail.PERSON}"
+                        android:layout_marginBottom="@dimen/recyclerview_bottom_margin"
+                        android:adapter="@{fragment.adapterPeople}"
+                        tools:listitem="@layout/item_person" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </FrameLayout>
+
     </LinearLayout>
 </layout>

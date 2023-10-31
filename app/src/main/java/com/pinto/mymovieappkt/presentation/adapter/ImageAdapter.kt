@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -23,8 +24,7 @@ class ImageAdapter(
                     Constants.IMAGE_LIST to currentList.toTypedArray(),
                     Constants.IMAGE_POSITION to adapterPosition,
                 )
-                //TODO: add navcontroller
-//                view.root.findNavController().navigate(R.id.action, bundle)
+                view.root.findNavController().navigate(R.id.action_global_fullscreenImageFragment, bundle)
             }
         }
     }

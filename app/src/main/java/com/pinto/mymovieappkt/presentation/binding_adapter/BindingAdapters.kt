@@ -24,6 +24,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -157,7 +158,7 @@ fun View.setSeeAllNavigation(
             Constants.TV_RECOMMENDATIONS_LIST to tvRecommendationsList?.toTypedArray()
         )
 
-//        findNavController().navigate(R.id.action_global_seeAllFragment, bundle)
+        findNavController().navigate(R.id.action_global_seeAllFragment, bundle)
     }
 }
 

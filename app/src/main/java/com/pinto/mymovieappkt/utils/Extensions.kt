@@ -7,9 +7,12 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.android.youtube.player.YouTubeStandalonePlayer
+import com.pinto.mymovieappkt.BuildConfig
 import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.domain.model.Genre
 import java.text.DecimalFormat
@@ -21,7 +24,7 @@ import kotlin.math.roundToInt
 fun ChipGroup.setGenreChips(
     genres: List<Genre>,
     detailType: Detail,
-    backgroundColor: Int
+    backgroundColor: Int,
 ) {
     genres.forEach { genre ->
         addView(
@@ -40,7 +43,7 @@ fun ChipGroup.setGenreChips(
                         Constants.BACKGROUND_COLOR to backgroundColor
                     )
 
-//                    findNavController().navigate(R.id.action_global_seeAllFragment, bundle)
+                    findNavController().navigate(R.id.action_global_seeAllFragment, bundle)
                 }
             }
         )
@@ -63,11 +66,13 @@ fun RecyclerView.interceptTouch() {
 }
 
 fun Int.isDarkColor(): Boolean {
-    val darkness = 1 - (0.299 * Color.red(this) + 0.587 * Color.green(this) + 0.114 * Color.blue(this)) / 255
+    val darkness =
+        1 - (0.299 * Color.red(this) + 0.587 * Color.green(this) + 0.114 * Color.blue(this)) / 255
     return darkness >= 0.5
 }
 
-fun Int.setTintColor(reverse: Boolean = false): Int = if (this.isDarkColor() xor reverse) Color.WHITE else Color.BLACK
+fun Int.setTintColor(reverse: Boolean = false): Int =
+    if (this.isDarkColor() xor reverse) Color.WHITE else Color.BLACK
 
 fun Int?.formatTime(context: Context): String? = this?.let {
     when {
@@ -75,7 +80,13 @@ fun Int?.formatTime(context: Context): String? = this?.let {
         it >= 60 -> {
             val hours = it / 60
             val minutes = it % 60
-            "${hours}${context.getString(R.string.hour_short)} ${if (minutes == 0) "" else "$minutes${context.getString(R.string.minute_short)}"}"
+            "${hours}${context.getString(R.string.hour_short)} ${
+                if (minutes == 0) "" else "$minutes${
+                    context.getString(
+                        R.string.minute_short
+                    )
+                }"
+            }"
         }
 
         else -> "${it}${context.getString(R.string.minute_short)}"
@@ -98,16 +109,15 @@ fun String?.formatDate(): String {
 }
 
 
-///deprecated
-fun Fragment.playYoutubeVideo(videoKey: String){
-//    startActivity(
-//        YouTubeStandalonePlayer.createVideoIntent(
-//            requireActivity(),
-//            BuildConfig.YOUTUBE_API_KEY,
-//            videoKey,
-//            0, // start millisecond
-//            true, // autoplay
-//            false // lightbox mode
-//        )
-//    )
+fun Fragment.playYoutubeVideo(videoKey: String) {
+    startActivity(
+        YouTubeStandalonePlayer.createVideoIntent(
+            requireActivity(),
+            BuildConfig.YOUTUBE_API_KEY,
+            videoKey,
+            0, // start millisecond
+            true, // autoplay
+            false // lightbox mode
+        )
+    )
 }

@@ -296,7 +296,7 @@
 
                         <androidx.cardview.widget.CardView
                             style="@style/SpinnerParent"
-                            android:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView2"
                             app:layout_constraintTop_toTopOf="parent"
                             tools:layout_editor_absoluteY="1dp">
@@ -358,7 +358,6 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardView2"
                             style="@style/SpinnerParent"
-                            android:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/textView4"
                             app:layout_constraintTop_toTopOf="parent"
                             tools:layout_editor_absoluteY="1dp">
