@@ -1,32 +1,75 @@
 package com.pinto.mymovieappkt.presentation.screen.tv_details.season_details.episode_details
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.pinto.mymovieappkt.R
+import com.pinto.mymovieappkt.databinding.FragmentEpisodeDetailsBinding
+import com.pinto.mymovieappkt.presentation.adapter.ImageAdapter
+import com.pinto.mymovieappkt.presentation.adapter.PersonAdapter
+import com.pinto.mymovieappkt.presentation.adapter.VideoAdapter
+import com.pinto.mymovieappkt.presentation.base.BaseFragment
+import com.pinto.mymovieappkt.utils.Constants
+import com.pinto.mymovieappkt.utils.playYouTubeVideo
+import dagger.hilt.android.AndroidEntryPoint
 
-class EpisodeDetailsFragment : Fragment() {
+@AndroidEntryPoint
+class EpisodeDetailsFragment :
+    BaseFragment<FragmentEpisodeDetailsBinding>(R.layout.fragment_episode_details) {
 
-    companion object {
-        fun newInstance() = EpisodeDetailsFragment()
+
+    override val viewModel: EpisodeDetailsViewModel by viewModels()
+    val adapterVideos = VideoAdapter { playYouTubeVideo(it) }
+    val adapterCast = PersonAdapter(isCast = true)
+    val adapterGuestStars = PersonAdapter(isCast = true)
+    val adapterImages = ImageAdapter()
+
+    val seasonNumber by lazy {
+        arguments?.getInt(Constants.SEASON_NUMBER)!!
+    }
+    val episodeNumber by lazy {
+        arguments?.getInt(Constants.EPISODE_NUMBER)!!
     }
 
-    private lateinit var viewModel: EpisodeDetailsViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        manageRecyclerViewAdapterLifecycle(
+            binding.rvVideos,
+            binding.rvCast,
+            binding.rvGuestStars,
+            binding.rvImage,
+        )
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.fragment_episode_details, container, false)
+        viewModel.initRequest(detailId, seasonNumber, episodeNumber)
+
+        collectFlows(
+            listOf(
+                ::collectSeasonDetails,
+                ::collectUiState
+            )
+        )
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(EpisodeDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
+    private suspend fun collectSeasonDetails() {
+        viewModel.details.collect { seasonDetails ->
+            adapterVideos.submitList(seasonDetails.videos.filterVideos())
+            adapterCast.submitList(seasonDetails.credits.cast)
+            adapterImages.submitList(seasonDetails.images.stills)
+            adapterGuestStars.submitList(seasonDetails.credits.guestStars)
+        }
     }
 
+    private suspend fun collectUiState() {
+        viewModel.uiState.collect { state ->
+            if (state.isError) showSnackbar(
+                message = state.errorText!!,
+                actionText = getString(R.string.button_retry)
+            ) {
+                viewModel.retryConnection {
+                    viewModel.initRequest(detailId, seasonNumber, episodeNumber)
+                }
+            }
+        }
+    }
 }

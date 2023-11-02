@@ -22,7 +22,7 @@ class ImageAdapter(
             view.root.setOnClickListener {
                 val bundle = bundleOf(
                     Constants.IMAGE_LIST to currentList.toTypedArray(),
-                    Constants.IMAGE_POSITION to adapterPosition,
+                    Constants.IMAGE_POSITION to absoluteAdapterPosition,
                 )
                 view.root.findNavController().navigate(R.id.action_global_fullscreenImageFragment, bundle)
             }

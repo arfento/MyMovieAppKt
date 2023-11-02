@@ -77,7 +77,7 @@
                 android:fontFamily="sans-serif-light"
                 android:maxLength="@{isCredits ? Integer.MAX_VALUE : 4}"
                 android:text="@{isCredits ? (tv.character == null ? tv.job : tv.character) : tv.firstAirDate}"
-                tools:text="2022" />
+                tools:text="2023" />
 
             <TextView
                 coloredRating="@{ExtensionsKt.round(tv.voteAverage)}"

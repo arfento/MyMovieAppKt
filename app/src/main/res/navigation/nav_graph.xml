@@ -25,7 +25,8 @@
     <fragment
         android:id="@+id/fullscreenImageFragment"
         android:name="com.pinto.mymovieappkt.presentation.screen.fullscreen_image.FullscreenImageFragment"
-        android:label="FullscreenImageFragment">
+        android:label="FullscreenImageFragment"
+        tools:layout="@layout/fragment_fullscreen_image">
         <argument
             android:name="imageList"
             app:argType="com.pinto.mymovieappkt.domain.model.Image[]" />
@@ -41,7 +42,8 @@
     <fragment
         android:id="@+id/seeAllFragment"
         android:name="com.pinto.mymovieappkt.presentation.screen.see_all.SeeAllFragment"
-        android:label="SeeAllFragment">
+        android:label="SeeAllFragment"
+        tools:layout="@layout/fragment_see_all">
         <argument
             android:name="contentType"
             app:argType="com.pinto.mymovieappkt.utils.Content" />
@@ -111,13 +113,91 @@
         android:id="@+id/action_global_seeAllFragment"
         app:destination="@id/seeAllFragment" />
 
-
+    <!--person details-->
     <fragment
         android:id="@+id/personDetailsFragment"
         android:name="com.pinto.mymovieappkt.presentation.screen.person_details.PersonDetailsFragment"
-        android:label="PersonDetailsFragment">
-
-
+        android:label="PersonDetailsFragment"
+        tools:layout="@layout/fragment_person_details">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="backgroundColor"
+            app:argType="integer" />
     </fragment>
+    <action
+        android:id="@+id/action_global_personDetailsFragment"
+        app:destination="@id/personDetailsFragment" />
+
+    <!--detail movie-->
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.pinto.mymovieappkt.presentation.screen.movie_details.MovieDetailsFragment"
+        android:label="MovieDetailsFragment"
+        tools:layout="@layout/fragment_movie_details">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="backgroundColor"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_movieDetailsFragment"
+        app:destination="@id/movieDetailsFragment" />
+
+    <!--    tv detail-->
+    <fragment
+        android:id="@+id/tvDetailsFragment"
+        android:name="com.pinto.mymovieappkt.presentation.screen.tv_details.TvDetailsFragment"
+        android:label="TvDetailsFragment"
+        tools:layout="@layout/fragment_tv_details">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="backgroundColor"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_tvDetailsFragment_to_seasonDetailsFragment"
+            app:destination="@id/seasonDetailsFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_tvDetailsFragment"
+        app:destination="@id/tvDetailsFragment" />
+
+    <fragment
+        android:id="@+id/seasonDetailsFragment"
+        android:name="com.pinto.mymovieappkt.presentation.screen.tv_details.season_details.SeasonDetailsFragment"
+        android:label="SeasonDetailsFragment"
+        tools:layout="@layout/fragment_season_details">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="backgroundColor"
+            app:argType="integer" />
+        <argument
+            android:name="seasonNumber"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_seasonDetailsFragment_to_episodeDetailsFragment"
+            app:destination="@id/episodeDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/episodeDetailsFragment"
+        android:name="com.pinto.mymovieappkt.presentation.screen.tv_details.season_details.episode_details.EpisodeDetailsFragment"
+        android:label="EpisodeDetailsFragment"
+        tools:layout="@layout/fragment_episode_details">
+        <argument
+            android:name="seasonNumber"
+            app:argType="integer" />
+        <argument
+            android:name="episodeNumber"
+            app:argType="integer" />
+    </fragment>
+
 
 </navigation>

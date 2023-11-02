@@ -10,6 +10,7 @@ import com.pinto.mymovieappkt.databinding.FragmentTvExploreBinding
 import com.pinto.mymovieappkt.presentation.adapter.TvAdapter
 import com.pinto.mymovieappkt.presentation.base.BaseFragment
 import com.pinto.mymovieappkt.utils.Constants
+import com.pinto.mymovieappkt.utils.playYouTubeVideo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,15 +52,7 @@ class TvExploreFragment : BaseFragment<FragmentTvExploreBinding>(R.layout.fragme
             message = getString(R.string.trending_trailer_error),
             indefinite = false,
             anchor = true
-        ) else
-            showSnackbar(
-                message = getString(R.string.trending_trailer_button),
-                indefinite = false,
-                anchor = true
-            )
-        //deprecated lib
-        //playYouTubeVideo(videoKey)
-
+        ) else playYouTubeVideo(videoKey)
     }
 
     private fun setupSpinner() {

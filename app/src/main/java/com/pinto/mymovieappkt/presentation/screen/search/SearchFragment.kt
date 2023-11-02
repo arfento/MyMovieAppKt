@@ -3,7 +3,7 @@ package com.pinto.mymovieappkt.presentation.screen.search
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import androidx.appcompat.widget.SearchView
+import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.databinding.FragmentSearchBinding

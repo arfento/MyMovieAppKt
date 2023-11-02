@@ -12,6 +12,7 @@ import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.databinding.FragmentMovieExploreBinding
 import com.pinto.mymovieappkt.presentation.adapter.MovieAdapter
 import com.pinto.mymovieappkt.presentation.base.BaseFragment
+import com.pinto.mymovieappkt.utils.playYouTubeVideo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -120,14 +121,7 @@ class MovieExploreFragment :
             message = getString(R.string.trending_trailer_error),
             indefinite = false,
             anchor = true
-        ) else
-            showSnackbar(
-                message = getString(R.string.trending_trailer_button),
-                indefinite = false,
-                anchor = true
-            )
-        //deprecated lib
-//            playYouTubeVideo(videoKey)
+        ) else playYouTubeVideo(videoKey)
 
     }
 

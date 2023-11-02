@@ -45,6 +45,5 @@
             android:textColor="@color/white"
             tools:text="1/10" />
 
-
     </FrameLayout>
 </layout>

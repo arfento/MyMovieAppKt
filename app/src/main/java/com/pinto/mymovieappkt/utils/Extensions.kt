@@ -21,6 +21,19 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import kotlin.math.roundToInt
 
+fun Fragment.playYouTubeVideo(videoKey: String) {
+    startActivity(
+        YouTubeStandalonePlayer.createVideoIntent(
+            requireActivity(),
+            BuildConfig.YOUTUBE_API_KEY,
+            videoKey,
+            0, // start millisecond
+            true, // autoplay
+            false // lightbox mode
+        )
+    )
+}
+
 fun ChipGroup.setGenreChips(
     genres: List<Genre>,
     detailType: Detail,
@@ -109,15 +122,3 @@ fun String?.formatDate(): String {
 }
 
 
-fun Fragment.playYoutubeVideo(videoKey: String) {
-    startActivity(
-        YouTubeStandalonePlayer.createVideoIntent(
-            requireActivity(),
-            BuildConfig.YOUTUBE_API_KEY,
-            videoKey,
-            0, // start millisecond
-            true, // autoplay
-            false // lightbox mode
-        )
-    )
-}

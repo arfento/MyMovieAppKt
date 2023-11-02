@@ -61,9 +61,8 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{person.name}"
-            android:textSize="@dimen/title_text_size_small"
             android:textStyle="bold"
-            tools:text="Person Title" />
+            tools:text="Name Surname" />
 
         <TextView
             isVisible="@{!person.character.empty || !person.knownForDepartment.empty}"

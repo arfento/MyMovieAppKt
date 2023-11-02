@@ -3,7 +3,6 @@ package com.pinto.mymovieappkt.utils
 object Constants {
     const val DETAIL_ID = "id"
 
-
     const val LIST_ID_POPULAR = "popular"
     const val LIST_ID_TOP_RATED = "top_rated"
     const val LIST_ID_NOW_PLAYING = "now_playing"
@@ -11,12 +10,12 @@ object Constants {
     const val LIST_ID_AIRING_DAY = "airing_today"
     const val LIST_ID_AIRING_WEEK = "on_the_air"
 
+    const val BACKGROUND_COLOR = "backgroundColor"
     const val CONTENT_TYPE = "contentType"
     const val DETAIL_TYPE = "detailType"
     const val GENRE_ID = "genreId"
     const val LIST_ID = "listId"
     const val TITLE = "title"
-    const val BACKGROUND_COLOR = "backgroundColor"
     const val REGION = "region"
     const val VIDEO_LIST = "videoList"
     const val CAST_LIST = "castList"

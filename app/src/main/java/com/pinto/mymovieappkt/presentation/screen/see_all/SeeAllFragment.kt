@@ -17,10 +17,12 @@ import com.pinto.mymovieappkt.presentation.adapter.ImageAdapter
 import com.pinto.mymovieappkt.presentation.adapter.MovieAdapter
 import com.pinto.mymovieappkt.presentation.adapter.PersonAdapter
 import com.pinto.mymovieappkt.presentation.adapter.TvAdapter
+import com.pinto.mymovieappkt.presentation.adapter.VideoAdapter
 import com.pinto.mymovieappkt.presentation.base.BaseFragment
 import com.pinto.mymovieappkt.utils.Constants
 import com.pinto.mymovieappkt.utils.Content
 import com.pinto.mymovieappkt.utils.Detail
+import com.pinto.mymovieappkt.utils.playYouTubeVideo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,7 +34,6 @@ class SeeAllFragment : BaseFragment<FragmentSeeAllBinding>(R.layout.fragment_see
     private val tvAdapter by lazy { TvAdapter(isGrid = true) }
     private val personAdapter by lazy { PersonAdapter(isGrid = true) }
 
-    var contentType: Parcelable? = null
     private var detailType: Parcelable? = null
     private var genreId: Int? = null
     private var listId: String? = null
@@ -42,8 +43,9 @@ class SeeAllFragment : BaseFragment<FragmentSeeAllBinding>(R.layout.fragment_see
     private var imageList: List<Image>? = null
     private var personMovieCreditsList: List<Movie>? = null
     private var personTvCreditsList: List<Tv>? = null
-    private var movieRecommendationList: List<Movie>? = null
-    private var tvRecommendationList: List<Tv>? = null
+    private var movieRecommendationsList: List<Movie>? = null
+    private var tvRecommendationsList: List<Tv>? = null
+    var contentType: Parcelable? = null
     var title: String? = null
 
 
@@ -79,8 +81,8 @@ class SeeAllFragment : BaseFragment<FragmentSeeAllBinding>(R.layout.fragment_see
         imageList = args.imageList?.toList()
         personMovieCreditsList = args.personMovieCreditsList?.toList()
         personTvCreditsList = args.personTvCreditsList?.toList()
-        movieRecommendationList = args.movieRecommendationsList?.toList()
-        tvRecommendationList = args.tvRecommendationsList?.toList()
+        movieRecommendationsList = args.movieRecommendationsList?.toList()
+        tvRecommendationsList = args.tvRecommendationsList?.toList()
         title = args.title +
                 if (contentType == Content.GENRE) {
                     " " + if (detailType == Detail.MOVIE)
@@ -93,15 +95,13 @@ class SeeAllFragment : BaseFragment<FragmentSeeAllBinding>(R.layout.fragment_see
     private fun getList() {
         binding.rvSeeAll.adapter =
             when (contentType) {
-                //TODO: add video trailer
-////                for video di skip krna yt nya belum
-//                Content.VIDEOS -> {
-//                VideoAdapter(true) { videoKey ->
-//                    playYouTubeVideo(videoKey)
-//                }.apply {
-//                    submitList(videoList)
-//                }
-//            }
+                Content.VIDEOS -> {
+                VideoAdapter(true) { videoKey ->
+                    playYouTubeVideo(videoKey)
+                }.apply {
+                    submitList(videoList)
+                }
+            }
                 Content.CAST -> {
                     PersonAdapter(isGrid = true, isCast = true).apply {
                         submitList(castList)
@@ -138,13 +138,13 @@ class SeeAllFragment : BaseFragment<FragmentSeeAllBinding>(R.layout.fragment_see
                     when (detailType) {
                         Detail.MOVIE -> {
                             MovieAdapter(isGrid = true).apply {
-                                submitList(movieRecommendationList)
+                                submitList(movieRecommendationsList)
                             }
                         }
 
                         Detail.TV -> {
                             TvAdapter(isGrid = true).apply {
-                                submitList(tvRecommendationList)
+                                submitList(tvRecommendationsList)
                             }
                         }
 

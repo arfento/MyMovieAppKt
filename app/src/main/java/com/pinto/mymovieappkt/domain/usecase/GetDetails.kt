@@ -25,7 +25,7 @@ class GetDetails @Inject constructor(
             when(detailType){
                 Detail.MOVIE -> movieRepository.getMovieDetails(id)
                 Detail.TV -> tvRepository.getTvDetails(id)
-                Detail.TV_SEASON-> tvRepository.getSeasonDetails(id, seasonNumber!!)
+                Detail.TV_SEASON -> tvRepository.getSeasonDetails(id, seasonNumber!!)
                 Detail.TV_EPISODE -> tvRepository.getEpisodeDetails(id, seasonNumber!!, episodeNumber!!)
                 Detail.PERSON -> personRepository.getPersonDetails(id)
             }

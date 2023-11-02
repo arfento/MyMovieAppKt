@@ -99,14 +99,13 @@ fun View.setDetailsNavigation(
     }
 
     setOnClickListener {
-        //TODO : navigation
-//        val destination = when (detailType) {
-//            Detail.MOVIE -> R.id.action_global_movieDetailsFragment
-//            Detail.TV -> R.id.action_global_tvDetailsFragment
-//            Detail.TV_SEASON -> R.id.action_tvDetailsFragment_to_seasonDetailsFragment
-//            Detail.TV_EPISODE -> R.id.action_seasonDetailsFragment_to_episodeDetailsFragment
-//            Detail.PERSON -> R.id.action_global_personDetailsFragment
-//        }
+        val destination = when (detailType) {
+            Detail.MOVIE -> R.id.action_global_movieDetailsFragment
+            Detail.TV -> R.id.action_global_tvDetailsFragment
+            Detail.TV_SEASON -> R.id.action_tvDetailsFragment_to_seasonDetailsFragment
+            Detail.TV_EPISODE -> R.id.action_seasonDetailsFragment_to_episodeDetailsFragment
+            Detail.PERSON -> R.id.action_global_personDetailsFragment
+        }
 
         val bundle = bundleOf(
             Constants.DETAIL_ID to id,
@@ -115,7 +114,7 @@ fun View.setDetailsNavigation(
             Constants.EPISODE_NUMBER to episodeNumber
         )
 
-//        findNavController().navigate(destination, bundle)
+        findNavController().navigate(destination, bundle)
     }
 }
 

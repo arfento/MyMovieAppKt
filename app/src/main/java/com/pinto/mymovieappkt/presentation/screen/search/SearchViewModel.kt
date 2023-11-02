@@ -96,7 +96,7 @@ class SearchViewModel @Inject constructor(private val getSearchResults: GetSearc
                             _tvTotalResults.value = totalResults
                         }
 
-                        Detail.MOVIE -> with(response.data as PersonList) {
+                        Detail.PERSON -> with(response.data as PersonList) {
                             _personResults.value =
                                 if (isQueryChanged) results else _personResults.value + results
                             _personTotalResults.value = totalResults
@@ -104,6 +104,7 @@ class SearchViewModel @Inject constructor(private val getSearchResults: GetSearc
 
                         else -> throw IllegalArgumentException(Constants.ILLEGAL_ARGUMENT_DETAIL_TYPE)
                     }
+
                     areResponsesSuccessful.add(true)
                     isInitial = false
                 }
@@ -141,9 +142,9 @@ class SearchViewModel @Inject constructor(private val getSearchResults: GetSearc
         isQueryChanged = true
         isInitial = true
 
-        pagePerson = 1
-        pageTv = 1
         pageMovie = 1
+        pageTv = 1
+        pagePerson = 1
 
         initRequests()
     }

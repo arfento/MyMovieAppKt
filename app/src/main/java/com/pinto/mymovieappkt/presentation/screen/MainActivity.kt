@@ -38,9 +38,11 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+
         if (getIsFirstLaunch()) showAlertDialog()
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
 
         binding.bottomNavBar.setupWithNavController(navController)
@@ -53,28 +55,52 @@ class MainActivity : AppCompatActivity() {
         binding: ActivityMainBinding,
         navController: NavController,
     ) {
-        with(WindowInsetsControllerCompat(window, window.decorView)){
-            navController.addOnDestinationChangedListener{ _, destination, bundle ->
+        with(WindowInsetsControllerCompat(window, window.decorView)) {
+            navController.addOnDestinationChangedListener { _, destination, bundle ->
                 window.statusBarColor = when (destination.id) {
-                    R.id.homeFragment, R.id.searchFragment, R.id.favoritesFragment ->{
+                    R.id.homeFragment, R.id.searchFragment, R.id.favoritesFragment -> {
                         binding.bottomNavBar.visibility = View.VISIBLE
                         setTheme(R.style.Theme_MyMovieAppKt)
                         WindowCompat.setDecorFitsSystemWindows(window, true)
                         isAppearanceLightStatusBars = true
 
-                        when(Build.VERSION.SDK_INT){
+                        when (Build.VERSION.SDK_INT) {
                             21, 22 -> Color.BLACK
-                            else -> ContextCompat.getColor(this@MainActivity, R.color.day_night_inverse)
+                            else -> ContextCompat.getColor(
+                                this@MainActivity,
+                                R.color.day_night_inverse
+                            )
                         }
                     }
+
                     else -> {
                         binding.bottomNavBar.visibility = View.GONE
                         val backgroundColor = bundle?.getInt(Constants.BACKGROUND_COLOR) ?: 0
                         val isDarkBackground = backgroundColor.isDarkColor()
 
-                        when (destination.id){
+                        when (destination.id) {
+                            R.id.fullscreenImageFragment -> {
+                                WindowCompat.setDecorFitsSystemWindows(window, true)
+                                Color.BLACK
+                            }
+                            R.id.seeAllFragment -> {
+                                WindowCompat.setDecorFitsSystemWindows(window, true)
 
-                            else ->{
+                                if (backgroundColor != 0) {
+                                    setTheme(if (isDarkBackground) R.style.DetailDarkTheme else R.style.DetailLightTheme)
+                                    isAppearanceLightStatusBars = !isDarkBackground
+                                    backgroundColor
+                                } else {
+                                    setTheme(R.style.Theme_MyMovieAppKt)
+                                    isAppearanceLightStatusBars = true
+                                    if (Build.VERSION.SDK_INT in 21..22) Color.BLACK
+                                    else ContextCompat.getColor(
+                                        this@MainActivity,
+                                        R.color.day_night_inverse
+                                    )
+                                }
+                            }
+                            else -> {
                                 window.statusBarColor = backgroundColor
                                 WindowCompat.setDecorFitsSystemWindows(window, false)
                                 setTheme(if (isDarkBackground) R.style.DetailDarkTheme else R.style.DetailLightTheme)
@@ -93,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             .setIcon(AppCompatResources.getDrawable(this, R.drawable.ic_tmdb_24))
             .setTitle(getString(R.string.tmdb_attribution_title))
             .setMessage(getString(R.string.tmdb_attribution_message))
-            .setPositiveButton(getString(R.string.tmdb_attribution_button_text)){ dialog, _ ->
+            .setPositiveButton(getString(R.string.tmdb_attribution_button_text)) { dialog, _ ->
                 setIsFirstLaunch()
                 dialog.dismiss()
             }
@@ -102,14 +128,14 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun setIsFirstLaunch() : Unit = runBlocking {
+    private fun getIsFirstLaunch(): Boolean = runBlocking {
+        dataStore.data.first()[PreferencesKey.IS_FIRST_LAUNCH] ?: true
+    }
+
+    private fun setIsFirstLaunch(): Unit = runBlocking {
         dataStore.edit { preferences ->
             preferences[PreferencesKey.IS_FIRST_LAUNCH] = false
         }
-    }
-
-    private fun getIsFirstLaunch(): Boolean = runBlocking {
-        dataStore.data.first()[PreferencesKey.IS_FIRST_LAUNCH] ?: true
     }
 
     private object PreferencesKey {

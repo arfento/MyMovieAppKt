@@ -53,12 +53,12 @@
                 app:layout_constraintStart_toEndOf="@+id/ivBack"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.SearchView
+                <SearchView
                     android:id="@+id/searchView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:iconifiedByDefault="false"
-                    app:queryHint="@string/search_query_hint" />
+                    android:iconifiedByDefault="false"
+                    android:queryHint="@string/search_query_hint" />
 
             </androidx.cardview.widget.CardView>
 

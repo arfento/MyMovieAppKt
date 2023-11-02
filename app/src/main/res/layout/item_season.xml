@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.pinto.mymovieappkt.utils.ExtensionsKt" />
+
+        <import type="com.pinto.mymovieappkt.utils.ImageQuality" />
+
+        <import type="com.pinto.mymovieappkt.utils.Detail" />
+
+        <variable
+            name="tvId"
+            type="Integer" />
+
+        <variable
+            name="season"
+            type="com.pinto.mymovieappkt.domain.model.Season" />
+
+    </data>
+
+    <LinearLayout
+        detailId="@{tvId}"
+        detailImageUrl="@{season.posterPath}"
+        detailType="@{Detail.TV_SEASON}"
+        seasonNumber="@{season.seasonNumber}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/recyclerview_item_end_margin"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="vertical"
+            android:padding="@dimen/start_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{season.name}"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Season name" />
+
+            <TextView
+                isVisible="@{season.airDate != null}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="@{ExtensionsKt.formatDate(season.airDate)}"
+                tools:text="01 November, 2023" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="@{@string/detail_season_episodes(season.episodeCount)}"
+                tools:text="0 Episodes" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>
