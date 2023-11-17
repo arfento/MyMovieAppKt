@@ -4,6 +4,7 @@
     <string name="title_bottom_nav_bar_1">Home</string>
     <string name="title_bottom_nav_bar_2">Search</string>
     <string name="title_bottom_nav_bar_3">Favorites</string>
+    <string name="title_bottom_nav_bar_4">Settings</string>
 
     <string name="tab_title_1">MOVIES</string>
     <string name="tab_title_2">TV SHOWS</string>
@@ -216,4 +217,22 @@
     <string name="united_states">United States,US</string>
     <string name="uruguay">Uruguay,UY</string>
     <string name="vietnam">Vietnam,VN</string>
+
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="battery_saver">Battery Saver</string>
+    <string name="download">Download</string>
+    <string name="settings">Settings</string>
+    <string name="theme">Theme</string>
+    <string name="language">Language</string>
+    <string name="englishLocale">English</string>
+    <string name="indonesiaLocale">Indonesian</string>
+
+    <string name="follow_system">Follow system</string>
+    <string name="unavilable">Unavailable Feature</string>
+    <string name="grant">Grant Permission</string>
+    <string name="cancel">Cancel</string>
+    <string name="permission_needed">Permission needed</string>
+    <string name="ok">OK</string>
+    <string name="no_thanks">No thanks</string>
 </resources>

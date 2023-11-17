@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         with(WindowInsetsControllerCompat(window, window.decorView)) {
             navController.addOnDestinationChangedListener { _, destination, bundle ->
                 window.statusBarColor = when (destination.id) {
-                    R.id.homeFragment, R.id.searchFragment, R.id.favoritesFragment -> {
+                    R.id.homeFragment, R.id.searchFragment, R.id.favoritesFragment,  R.id.settingsFragment -> {
                         binding.bottomNavBar.visibility = View.VISIBLE
                         setTheme(R.style.Theme_MyMovieAppKt)
                         WindowCompat.setDecorFitsSystemWindows(window, true)

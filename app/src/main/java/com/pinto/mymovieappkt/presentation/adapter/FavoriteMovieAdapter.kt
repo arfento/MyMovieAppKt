@@ -18,7 +18,7 @@ class FavoriteMovieAdapter(
         RecyclerView.ViewHolder(view.root) {
         init {
             view.ivRemove.setOnClickListener {
-                onItemClicked(getItem(adapterPosition))
+                onItemClicked(getItem(absoluteAdapterPosition))
             }
         }
     }

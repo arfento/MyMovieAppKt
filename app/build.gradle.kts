@@ -81,6 +81,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation ("androidx.security:security-crypto-ktx:1.1.0-alpha04")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -102,6 +103,13 @@ dependencies {
     implementation ("com.google.dagger:hilt-android:$hiltVersion")
     kapt ("com.google.dagger:hilt-compiler:$hiltVersion")
 
+    //WorkManager-KTX
+    val workVersion = "2.8.1"
+    implementation ("androidx.work:work-runtime-ktx:$workVersion")
+    //Hilt-Work
+    implementation ("androidx.hilt:hilt-work:1.1.0")
+    kapt ("androidx.hilt:hilt-compiler:1.1.0")
+
     //Room
     val roomVersion = "2.6.0"
     implementation ("androidx.room:room-ktx:$roomVersion")
@@ -110,11 +118,13 @@ dependencies {
     //DataStore
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
 
-    //Retrofit + Gson
+    //Retrofit + Gson + Okhttp3
     val retrofitVersion = "2.9.0"
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation ("com.google.code.gson:gson:2.10.1")
+//    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
+
 
     //Glide + Glide Transformations
     val glideVersion = "4.15.1"
@@ -131,4 +141,16 @@ dependencies {
 
     //LeakCanary
     debugImplementation ("com.squareup.leakcanary:leakcanary-android:2.12")
+
+    //yt
+    val mediaVersion = "1.0.2"
+    implementation ("androidx.media3:media3-exoplayer:$mediaVersion")
+    implementation ("androidx.media3:media3-ui:$mediaVersion")
+    implementation ("androidx.media3:media3-exoplayer-dash:$mediaVersion")
+    implementation ("com.github.maxrave-dev:kotlin-youtubeExtractor:0.0.2")
+    // Youtube Player
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
+
+
+
 }

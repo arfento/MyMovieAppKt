@@ -45,7 +45,6 @@
 
         </androidx.cardview.widget.CardView>
 
-
         <androidx.cardview.widget.CardView
             isVisible="@{isPortrait}"
             android:layout_width="match_parent"
@@ -62,5 +61,6 @@
                 android:scaleType="centerCrop" />
 
         </androidx.cardview.widget.CardView>
+
     </FrameLayout>
 </layout>

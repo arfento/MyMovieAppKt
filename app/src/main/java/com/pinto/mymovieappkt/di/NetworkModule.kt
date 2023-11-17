@@ -6,6 +6,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.NetworkInfo
 import android.os.Build
+import com.google.gson.Gson
 import com.pinto.mymovieappkt.BuildConfig
 import com.pinto.mymovieappkt.data.remote.api.MovieApi
 import com.pinto.mymovieappkt.data.remote.api.PersonApi
@@ -109,4 +110,10 @@ object NetworkModule {
     @Singleton
     @Provides
     fun providePersonApi(retrofit: Retrofit): PersonApi = retrofit.create(PersonApi::class.java)
+
+    @Singleton
+    @Provides
+    fun provideGson(): Gson {
+        return Gson()
+    }
 }

@@ -45,5 +45,17 @@
             android:textColor="@color/white"
             tools:text="1/10" />
 
+        <ImageButton
+            android:id="@+id/btnDownload"
+            isVisible="@{!fragment.fullscreen}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:layout_margin="@dimen/margin_close_button"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="@dimen/padding_close_button"
+            android:src="@drawable/download"
+            app:tint="@color/white" />
+
     </FrameLayout>
 </layout>

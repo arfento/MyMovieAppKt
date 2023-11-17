@@ -20,6 +20,11 @@
         android:name="com.pinto.mymovieappkt.presentation.screen.search.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.pinto.mymovieappkt.presentation.screen.setting.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
 
     <!--fullscreen-->
     <fragment
@@ -33,6 +38,8 @@
         <argument
             android:name="imagePosition"
             app:argType="integer" />
+
+
     </fragment>
     <action
         android:id="@+id/action_global_fullscreenImageFragment"

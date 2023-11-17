@@ -22,9 +22,11 @@ class ImageAdapter(
             view.root.setOnClickListener {
                 val bundle = bundleOf(
                     Constants.IMAGE_LIST to currentList.toTypedArray(),
-                    Constants.IMAGE_POSITION to absoluteAdapterPosition,
+                    Constants.IMAGE_POSITION to absoluteAdapterPosition
                 )
-                view.root.findNavController().navigate(R.id.action_global_fullscreenImageFragment, bundle)
+
+                view.root.findNavController()
+                    .navigate(R.id.action_global_fullscreenImageFragment, bundle)
             }
         }
     }
@@ -38,7 +40,6 @@ class ImageAdapter(
                 false
             )
         )
-
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -50,13 +51,11 @@ class ImageAdapter(
     }
 
     object DiffCallback : DiffUtil.ItemCallback<Image>() {
-        override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
-            return oldItem.filePath == newItem.filePath
-        }
+        override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean =
+            oldItem.filePath == newItem.filePath
 
-        override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean {
-            return oldItem == newItem
-        }
+        override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean =
+            oldItem == newItem
     }
 }
 

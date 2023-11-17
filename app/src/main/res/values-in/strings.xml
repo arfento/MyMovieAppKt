@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie App</string>
+
+    <string name="title_bottom_nav_bar_1">Beranda</string>
+    <string name="title_bottom_nav_bar_2">Pencarian</string>
+    <string name="title_bottom_nav_bar_3">Favorit</string>
+    <string name="title_bottom_nav_bar_4">Settings</string>
+
+    <string name="tab_title_1">Film</string>
+    <string name="tab_title_2">Acara TV</string>
+
+    <string name="button_see_all">LIHAT SEMUA</string>
+
+    <string name="title_trending">Tren minggu ini</string>
+    <string name="title_popular_movies">Film Populer</string>
+    <string name="title_top_rated_movies">Film Peringkat Teratas</string>
+    <string name="title_in_theatres">Sedang Tayang di Bioskop</string>
+    <string name="title_upcoming_movies">Film yang akan datang</string>
+
+    <string name="trending_trailer_button">Tonton cuplikannya</string>
+    <string name="trending_trailer_error">Tidak ada cuplikan yang ditemukan</string>
+
+    <string name="title_popular_tvs">Acara TV Populer</string>
+    <string name="title_top_rated_tvs">Acara TV Peringkat Teratas </string>
+    <string name="title_airing_tvs">Sedang Tayang</string>
+    <string name="title_airing_day">Hari Ini</string>
+    <string name="title_airing_week">Minggu Ini</string>
+
+    <string name="title_genres">Genre</string>
+    <string name="title_movies">Movie</string>
+    <string name="title_tv_shows">Acara TV</string>
+    <string name="title_people">Pemeran</string>
+
+    <string name="bullet_point">•</string>
+    <string name="thousand_separator">,</string>
+
+    <string name="hour_short">hr</string>
+    <string name="minute_short">min</string>
+
+    <string name="detail_summary">Rangkuman</string>
+    <string name="detail_director">Direktur</string>
+    <string name="detail_writers">Penulis</string>
+    <string name="detail_title_trailers">Trailer</string>
+    <string name="detail_title_cast">Pemeran</string>
+    <string name="detail_title_images">Gambar</string>
+    <string name="detail_title_details">Details</string>
+    <string name="detail_title_recommended_movies">Rekomendasi Movie</string>
+    <string name="detail_title_networks">Networks</string>
+
+    <string name="detail_original_title">Judul Original</string>
+    <string name="detail_release_date">Tanggal Rilis</string>
+    <string name="detail_runtime">Waktu</string>
+    <string name="detail_vote_count">Jumlah Suara Pengguna</string>
+    <string name="detail_vote_average">Skor Pengguna</string>
+    <string name="detail_spoken_language">Bahasa yang digunakan</string>
+    <string name="detail_budget">Anggaran</string>
+    <string name="detail_revenue">Pendapatan</string>
+    <string name="detail_production_company">Perusahaan Produksi</string>
+    <string name="detail_production_country">Negara Produksi</string>
+    <string name="detail_status">Status</string>
+    <string name="detail_genre">Genre</string>
+
+    <string name="detail_creators">Pencipta</string>
+    <string name="detail_title_seasons">Season</string>
+    <string name="detail_title_recommended_tvs">Acara TV yang Direkomendasikan</string>
+    <string name="detail_title_next_episode">Episode Berikutnya</string>
+    <string name="detail_body_next_episode">Season %d, Episode %d</string>
+
+    <string name="detail_first_air_date">Tanggal Rilis Episode Pertama</string>
+    <string name="detail_last_air_date">Tanggal Rilis Episode Terakhir</string>
+    <string name="detail_episode_runtime">Lama waktu per episode</string>
+    <string name="detail_in_production">Dalam produksi</string>
+    <string name="detail_networks">Tersedia di</string>
+    <string name="detail_season_episodes">%d episode</string>
+
+    <string name="detail_season_and_episode_number">S%dE%d</string>
+    <string name="detail_title_episodes">Semua episode</string>
+    <string name="detail_title_guest_stars">Bintang tamu</string>
+
+    <string name="detail_title_movie_credits">Movie</string>
+    <string name="detail_title_tv_credits">Acara TV</string>
+    <string name="title_as_cast">Sebagai Pemeran</string>
+    <string name="title_as_crew">Sebagai crew</string>
+
+    <string name="detail_birthday">Hari ulang tahun</string>
+    <string name="detail_current_age">" (%d tahun)"</string>
+    <string name="detail_birthplace">Tempat lahir</string>
+    <string name="detail_biography">Biografi</string>
+    <string name="detail_deathday">Hari kematian</string>
+    <string name="detail_death_age">" (pada usia %d)"</string>
+    <string name="detail_gender">Jenis Kelamin</string>
+    <string name="detail_job">Dikenal sebagai</string>
+    <string name="detail_also_known_as">Juga Dikenal Sebagai</string>
+
+    <string name="gender_female">Perempuan</string>
+    <string name="gender_male">Pria</string>
+    <string name="gender_non_binary">Non-binary</string>
+
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+
+    <string name="n_a">N/A</string>
+
+    <string name="empty_favorites_list_movie">Daftar film favorit Anda kosong</string>
+    <string name="empty_favorites_list_tv">Daftar acara TV favorit Anda kosong</string>
+
+    <string name="snackbar_removed_item">Dihapus dari favorit</string>
+    <string name="snackbar_action_undo">UNDO</string>
+
+    <string name="error_connection">Tidak dapat mengambil data, periksa koneksi internet Anda dan coba lagi.</string>
+    <string name="error_service">Layanan API tidak merespons saat ini, coba lagi nanti.</string>
+    <string name="error_unknown">Terjadi kesalahan yang tidak diketahui.</string>
+    <string name="button_retry">RETRY</string>
+
+    <string name="tmdb_attribution_title">Atribusi</string>
+    <string name="tmdb_attribution_message">Produk ini menggunakan API TMDB tetapi tidak didukung atau disertifikasi oleh TMDB.</string>
+    <string name="tmdb_attribution_button_text">GOT IT</string>
+
+    <string name="item_count">" (%d)"</string>
+    <string name="item_count_s">" (%s)"</string>
+    <string name="title_see_all_search">\"%s\" (%d)</string>
+
+    <string name="genre_action">Aksi</string>
+    <string name="genre_action_adventure"><![CDATA[Aksi & Petualangan]]></string>
+    <string name="genre_adventure">Petualangan</string>
+    <string name="genre_animation">Animasi</string>
+    <string name="genre_comedy">Komedi</string>
+    <string name="genre_crime">Kriminal</string>
+    <string name="genre_documentary">Dokumenter</string>
+    <string name="genre_drama">Drama</string>
+    <string name="genre_family">Keluarga</string>
+    <string name="genre_fantasy">Fantasi</string>
+    <string name="genre_history">Sejarah</string>
+    <string name="genre_horror">Horor</string>
+    <string name="genre_kids">Anak-anak</string>
+    <string name="genre_music">Musik</string>
+    <string name="genre_mystery">Misteri</string>
+    <string name="genre_news">Berita</string>
+    <string name="genre_reality">Realita</string>
+    <string name="genre_romance">Percintaan</string>
+    <string name="genre_science_fiction">Fiksi ilmiah</string>
+    <string name="genre_scifi_fantasy"><![CDATA[Fiksi Ilmiah & Fantasi]]></string>
+    <string name="genre_soap">Soap</string>
+    <string name="genre_talk">Talk</string>
+    <string name="genre_tv_movie">TV Movie</string>
+    <string name="genre_thriller">Thriller</string>
+    <string name="genre_war">Perang</string>
+    <string name="genre_war_politics"><![CDATA[Perang & Politik]]></string>
+    <string name="genre_western">Barat</string>
+
+    <string name="search_query_hint">Pencarian movie, acara TV or pemeran</string>
+
+    <string name="select_region">Pilih Negara</string>
+    <string name="argentina">Argentina,AR</string>
+    <string name="australia">Australia,AU</string>
+    <string name="austria">Austria,AT</string>
+    <string name="azerbaijan">Azerbaijan,Az</string>
+    <string name="bangladesh">Bangladesh,BG</string>
+    <string name="belgium">Belgium,BE</string>
+    <string name="brazil">Brazil,BR</string>
+    <string name="bulgaria">Bulgaria,BG</string>
+    <string name="cambodia">Cambodia,KH</string>
+    <string name="canada">Canada,CA</string>
+    <string name="china">China,CN</string>
+    <string name="costa_rica">Costa Rica,CR</string>
+    <string name="croatia">Croatia,HR</string>
+    <string name="czechia">Czechia,CZ</string>
+    <string name="denmark">Denmark,DK</string>
+    <string name="egypt">Egypt,EG</string>
+    <string name="estonia">Estonia,EE</string>
+    <string name="finland">Finland,FI</string>
+    <string name="france">France,FR</string>
+    <string name="germany">Germany,DE</string>
+    <string name="greece">Greece,GR</string>
+    <string name="hong_kong">Hong Kong,HK</string>
+    <string name="hungary">Hungary,HU</string>
+    <string name="iceland">Iceland,IS</string>
+    <string name="india">India,IN</string>
+    <string name="indonesia">Indonesia,ID</string>
+    <string name="iran">Iran,IR</string>
+    <string name="ireland">Ireland,IE</string>
+    <string name="israel">Israel,IL</string>
+    <string name="italy">Italy,IT</string>
+    <string name="japan">Japan,JP</string>
+    <string name="latvia">Latvia,LV</string>
+    <string name="lebanon">Lebanon,LB</string>
+    <string name="liberia">Liberia,LR</string>
+    <string name="lithuania">Lithuania,LT</string>
+    <string name="malaysia">Malaysia,MY</string>
+    <string name="mexico">Mexico,MX</string>
+    <string name="mongolia">Mongolia,MN</string>
+    <string name="morocco">Morocco,MA</string>
+    <string name="nepal">Nepal,NP</string>
+    <string name="netherlands">Netherlands,NL</string>
+    <string name="new_zealand">New Zealand,NZ</string>
+    <string name="norway">Norway,NO</string>
+    <string name="pakistan">Pakistan,PK</string>
+    <string name="peru">Peru,PE</string>
+    <string name="philippines">Philippines,PH</string>
+    <string name="poland">Poland,PL</string>
+    <string name="portugal">Portugal,PT</string>
+    <string name="puerto_rico">Puerto Rico,PR</string>
+    <string name="romania">Romania,RO</string>
+    <string name="russia">Russia,RU</string>
+    <string name="singapore">Singapore,SG</string>
+    <string name="slovakia">Slovakia,SK</string>
+    <string name="south_korea">South Korea,KR</string>
+    <string name="spain">Spain,ES</string>
+    <string name="sweden">Sweden,SE</string>
+    <string name="switzerland">Switzerland,CH</string>
+    <string name="taiwan">Taiwan,TW</string>
+    <string name="thailand">Thailand,TH</string>
+    <string name="turkey">Turkey,TR</string>
+    <string name="ukraine">Ukraine,UA</string>
+    <string name="united_arab_emirates">United Arab Emirates,AE</string>
+    <string name="united_kingdom">United Kingdom,GB</string>
+    <string name="united_states">United States,US</string>
+    <string name="uruguay">Uruguay,UY</string>
+    <string name="vietnam">Vietnam,VN</string>
+
+    <string name="light">Terang</string>
+    <string name="dark">Gelap</string>
+    <string name="battery_saver">Hemat Daya</string>
+    <string name="download">Unduh</string>
+    <string name="settings">Settings</string>
+    <string name="theme">Tema</string>
+    <string name="language">Bahasa</string>
+    <string name="englishLocale">Inggris</string>
+    <string name="indonesiaLocale">Indonesia</string>
+
+    <string name="follow_system">Follow system</string>
+    <string name="unavilable">Fitur Tidak Tersedia</string>
+    <string name="grant">Berikan Izin</string>
+    <string name="cancel">Cancel</string>
+    <string name="permission_needed">Izin diperlukan</string>
+    <string name="ok">OK</string>
+    <string name="no_thanks">No thanks</string>
+</resources>

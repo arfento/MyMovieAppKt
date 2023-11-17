@@ -36,7 +36,7 @@ class MovieAdapter(
             )
         ) {
             view.fabTrailer.setOnClickListener {
-                onTrendingFabClick?.invoke(getItem(adapterPosition).id)
+                onTrendingFabClick?.invoke(getItem(absoluteAdapterPosition).id)
             }
         }
     }

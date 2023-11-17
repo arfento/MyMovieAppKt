@@ -3,6 +3,7 @@ package com.pinto.mymovieappkt.utils
 import android.content.Context
 import android.graphics.Color
 import android.os.Parcelable
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.os.bundleOf
@@ -22,6 +23,8 @@ import java.util.Locale
 import kotlin.math.roundToInt
 
 fun Fragment.playYouTubeVideo(videoKey: String) {
+    Log.d(tag, "playYouTubeVideo : $videoKey")
+
     startActivity(
         YouTubeStandalonePlayer.createVideoIntent(
             requireActivity(),
