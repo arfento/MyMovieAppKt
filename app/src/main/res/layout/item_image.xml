@@ -39,6 +39,7 @@
             <ImageView
                 imageQuality="@{ImageQuality.MEDIUM}"
                 imageUrl="@{image.filePath}"
+                isVisible="@{!isPortrait}"
                 android:layout_width="@{isGrid ? @dimen/grid_list_item_width : @dimen/landscape_image_width, default = @dimen/landscape_image_width}"
                 android:layout_height="@{isGrid ? @dimen/landscape_image_height_grid : @dimen/landscape_image_height, default = @dimen/landscape_image_height}"
                 android:scaleType="centerCrop" />

@@ -85,6 +85,7 @@ fun View.setDetailsNavigation(
         Glide.with(context)
             .asBitmap()
             .load("https://image.tmdb.org/t/p/w92$it")
+            .error(AppCompatResources.getDrawable(context, R.drawable.ic_baseline_image_24))
             .priority(Priority.HIGH)
             .into(object : CustomTarget<Bitmap>() {
                 override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {

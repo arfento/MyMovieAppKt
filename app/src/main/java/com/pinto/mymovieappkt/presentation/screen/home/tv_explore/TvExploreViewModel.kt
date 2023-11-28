@@ -1,5 +1,6 @@
 package com.pinto.mymovieappkt.presentation.screen.home.tv_explore
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.pinto.mymovieappkt.domain.model.Tv
 import com.pinto.mymovieappkt.domain.model.TvList
@@ -21,7 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class TvExploreViewModel @Inject constructor(
     private val getList: GetList,
-    private val getTrendingVideos: GetTrendingVideos
+    private val getTrendingVideos: GetTrendingVideos,
 ) : BaseViewModel() {
 
     private val _trendingTvShows = MutableStateFlow(emptyList<Tv>())
@@ -115,8 +116,13 @@ class TvExploreViewModel @Inject constructor(
             getTrendingVideos(Detail.TV, tvId).collect { response ->
                 when (response) {
                     is Resource.Success -> {
-                        videoKey = response.data.filterVideos(true).last().key
-                        _uiState.value = UiState.successState()
+                        Log.d("url adapter tvid", "message adapter movie: getTrendingTvTrailerKey $tvId , ${response.data.results}")
+                        if (response.data.results.isNotEmpty()) {
+                            videoKey = response.data.filterVideos(true).first().key
+                            _uiState.value = UiState.successState()
+                        } else {
+                            _uiState.value = UiState.errorState(false, "Video is Empty")
+                        }
                     }
 
                     is Resource.Error -> {

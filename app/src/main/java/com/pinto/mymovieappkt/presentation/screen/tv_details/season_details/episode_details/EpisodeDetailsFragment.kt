@@ -3,6 +3,7 @@ package com.pinto.mymovieappkt.presentation.screen.tv_details.season_details.epi
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.databinding.FragmentEpisodeDetailsBinding
 import com.pinto.mymovieappkt.presentation.adapter.ImageAdapter
@@ -10,7 +11,6 @@ import com.pinto.mymovieappkt.presentation.adapter.PersonAdapter
 import com.pinto.mymovieappkt.presentation.adapter.VideoAdapter
 import com.pinto.mymovieappkt.presentation.base.BaseFragment
 import com.pinto.mymovieappkt.utils.Constants
-import com.pinto.mymovieappkt.utils.playYouTubeVideo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +19,13 @@ class EpisodeDetailsFragment :
 
 
     override val viewModel: EpisodeDetailsViewModel by viewModels()
-    val adapterVideos = VideoAdapter { playYouTubeVideo(it) }
+    val adapterVideos = VideoAdapter {
+        val action =
+            EpisodeDetailsFragmentDirections.actionEpisodeDetailsFragmentToVideoFragment(
+                it
+            )
+        findNavController().navigate(action)
+    }
     val adapterCast = PersonAdapter(isCast = true)
     val adapterGuestStars = PersonAdapter(isCast = true)
     val adapterImages = ImageAdapter()

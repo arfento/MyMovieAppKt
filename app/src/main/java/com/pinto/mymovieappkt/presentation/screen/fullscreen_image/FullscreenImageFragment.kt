@@ -26,7 +26,8 @@ import com.pinto.mymovieappkt.presentation.adapter.FullScreenImageAdapter
 import com.pinto.mymovieappkt.presentation.base.BaseFragment
 import com.pinto.mymovieappkt.presentation.base.BaseViewModel
 import com.pinto.mymovieappkt.presentation.screen.fullscreen_image.worker.DownloadImageWorker
-import com.pinto.mymovieappkt.utils.checkmPermission
+import com.pinto.mymovieappkt.utils.checkPermission
+
 import com.pinto.mymovieappkt.utils.unAvailableFeature
 import kotlinx.coroutines.flow.MutableStateFlow
 import java.time.Duration
@@ -104,7 +105,7 @@ class FullscreenImageFragment :
                 ) {
                     imagePositionText.value = "${position + 1}/$totalImageCount"
                     url =
-                        "https://image.tmdb.org/t/p/w500" + args.imageList[position].filePath
+                        "https://image.tmdb.org/t/p/original" + args.imageList[position].filePath
                     Log.d("url image", "message url image: vpImages $url")
                     initWorker()
                 }
@@ -114,7 +115,7 @@ class FullscreenImageFragment :
 
         binding.btnDownload.setOnClickListener {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-                requireContext().checkmPermission(
+                requireContext().checkPermission(
                     this@FullscreenImageFragment,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     {

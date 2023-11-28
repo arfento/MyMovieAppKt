@@ -5,12 +5,13 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.AdapterView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.databinding.FragmentTvExploreBinding
 import com.pinto.mymovieappkt.presentation.adapter.TvAdapter
 import com.pinto.mymovieappkt.presentation.base.BaseFragment
+import com.pinto.mymovieappkt.presentation.screen.home.HomeFragmentDirections
 import com.pinto.mymovieappkt.utils.Constants
-import com.pinto.mymovieappkt.utils.playYouTubeVideo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -52,7 +53,14 @@ class TvExploreFragment : BaseFragment<FragmentTvExploreBinding>(R.layout.fragme
             message = getString(R.string.trending_trailer_error),
             indefinite = false,
             anchor = true
-        ) else playYouTubeVideo(videoKey)
+        ) else {
+//            playYouTubeVideo(videoKey)
+            val action =
+                HomeFragmentDirections.actionHomeFragmentToVideoFragment2(
+                    videoKey
+                )
+            findNavController().navigate(action)
+        }
     }
 
     private fun setupSpinner() {

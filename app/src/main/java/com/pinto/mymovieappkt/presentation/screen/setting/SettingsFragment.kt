@@ -81,7 +81,7 @@ class SettingsFragment : Fragment() {
         builder.setSingleChoiceItems(locales, currentLang) { _, which ->
             when (which) {
                 0 -> {
-                    val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("in")
+                    val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("id")
                     AppCompatDelegate.setApplicationLocales(appLocale)
                     preferencesHelper.save(LANG_PREF, 0)
                     requireActivity().recreateTask()

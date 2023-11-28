@@ -2,8 +2,8 @@ package com.pinto.mymovieappkt.utils
 
 object Constants {
     const val DETAIL_ID = "id"
-    const val APP_PREF = "com.github.Mohamed-Emad126.APP_PREF"
-    const val SESSION = "com.github.Mohamed-Emad126.APP_PREF_SESSION"
+    const val APP_PREF = "APP_PREF"
+    const val SESSION = "APP_PREF_SESSION"
 
     const val LIST_ID_POPULAR = "popular"
     const val LIST_ID_TOP_RATED = "top_rated"
@@ -38,5 +38,7 @@ object Constants {
     const val DARK = 5
     const val LIGHT = 6
     const val LANG_PREF = "langPref"
+
+    const val VIDEO_URL = "videoUrl"
 
 }

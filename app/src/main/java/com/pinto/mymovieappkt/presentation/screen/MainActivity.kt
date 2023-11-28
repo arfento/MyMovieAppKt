@@ -1,10 +1,12 @@
 package com.pinto.mymovieappkt.presentation.screen
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
@@ -21,6 +23,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.databinding.ActivityMainBinding
 import com.pinto.mymovieappkt.utils.Constants
+import com.pinto.mymovieappkt.utils.Constants.DARK
+import com.pinto.mymovieappkt.utils.Constants.LIGHT
+import com.pinto.mymovieappkt.utils.LocaleUtils
+import com.pinto.mymovieappkt.utils.SharedPreferencesHelper
+import com.pinto.mymovieappkt.utils.Storage
 import com.pinto.mymovieappkt.utils.isDarkColor
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
@@ -29,14 +36,19 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var oldPrefLocaleCode: String
 
     @Inject
     lateinit var dataStore: DataStore<Preferences>
 
+    @Inject
+    lateinit var preferencesHelper: SharedPreferencesHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityMainBinding =
+        binding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
+        applyCurrentTheme()
 
 
         if (getIsFirstLaunch()) showAlertDialog()
@@ -58,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         with(WindowInsetsControllerCompat(window, window.decorView)) {
             navController.addOnDestinationChangedListener { _, destination, bundle ->
                 window.statusBarColor = when (destination.id) {
-                    R.id.homeFragment, R.id.searchFragment, R.id.favoritesFragment,  R.id.settingsFragment -> {
+                    R.id.homeFragment, R.id.searchFragment, R.id.favoritesFragment, R.id.settingsFragment -> {
                         binding.bottomNavBar.visibility = View.VISIBLE
                         setTheme(R.style.Theme_MyMovieAppKt)
                         WindowCompat.setDecorFitsSystemWindows(window, true)
@@ -83,6 +95,7 @@ class MainActivity : AppCompatActivity() {
                                 WindowCompat.setDecorFitsSystemWindows(window, true)
                                 Color.BLACK
                             }
+
                             R.id.seeAllFragment -> {
                                 WindowCompat.setDecorFitsSystemWindows(window, true)
 
@@ -100,6 +113,7 @@ class MainActivity : AppCompatActivity() {
                                     )
                                 }
                             }
+
                             else -> {
                                 window.statusBarColor = backgroundColor
                                 WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -142,4 +156,43 @@ class MainActivity : AppCompatActivity() {
         val IS_FIRST_LAUNCH = booleanPreferencesKey("is_first_launch")
 
     }
+
+    private fun changeTheme(theme: Int) {
+        AppCompatDelegate.setDefaultNightMode(theme)
+        delegate.applyDayNight()
+    }
+
+    private fun applyCurrentTheme() {
+        changeTheme(
+            when (preferencesHelper.darkMode) {
+                DARK -> {
+                    AppCompatDelegate.MODE_NIGHT_YES
+                }
+
+                LIGHT -> {
+                    AppCompatDelegate.MODE_NIGHT_NO
+                }
+
+                else -> {
+                    AppCompatDelegate.MODE_NIGHT_NO
+                }
+            }
+        )
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        oldPrefLocaleCode = Storage(newBase!!).getPreferredLocale()
+        applyOverrideConfiguration(LocaleUtils.getLocalizedConfiguration(oldPrefLocaleCode))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val currentLocale = Storage(this).getPreferredLocale()
+        if (oldPrefLocaleCode != currentLocale) {
+            recreate()
+            oldPrefLocaleCode = currentLocale
+        }
+    }
+
 }

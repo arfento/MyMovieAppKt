@@ -1,8 +1,10 @@
 package com.pinto.mymovieappkt.presentation.screen.movie_details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.databinding.FragmentMovieDetailsBinding
 import com.pinto.mymovieappkt.presentation.adapter.ImageAdapter
@@ -11,7 +13,6 @@ import com.pinto.mymovieappkt.presentation.adapter.PersonAdapter
 import com.pinto.mymovieappkt.presentation.adapter.VideoAdapter
 import com.pinto.mymovieappkt.presentation.base.BaseFragment
 import com.pinto.mymovieappkt.utils.Detail
-import com.pinto.mymovieappkt.utils.playYouTubeVideo
 import com.pinto.mymovieappkt.utils.setGenreChips
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +23,13 @@ class MovieDetailsFragment :
     override val viewModel: MovieDetailsViewModel by viewModels()
 
     val adapterVideos = VideoAdapter {
-        playYouTubeVideo(it)
+        Log.d("url adapter movie detail", "message adapter movie: VideoAdapter ${it}")
+        val action =
+            MovieDetailsFragmentDirections.actionMovieDetailsFragmentToVideoFragment(
+                it
+            )
+        findNavController().navigate(action)
+//        playYouTubeVideo(it)
     }
     val adapterCast = PersonAdapter(isCast = true)
     val adapterImages = ImageAdapter()

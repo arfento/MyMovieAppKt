@@ -13,7 +13,8 @@ interface MovieApi {
     suspend fun getMovieList(
         @Path("list_id") listId: String,
         @Query("page") page: Int,
-        @Query("region") region: String?
+        @Query("region") region: String?,
+        @Query("language") language: String? = "id-US"
     ): MovieListDTO
 
     @GET("trending/movie/week")
@@ -27,13 +28,15 @@ interface MovieApi {
     @GET("discover/movie")
     suspend fun getMoviesByGenre(
         @Query("with_genres") genreId: Int,
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("language") language: String? = "id-US"
     ): MovieListDTO
 
     @GET("search/movie")
     suspend fun getMovieSearchResults(
         @Query("query") query: String,
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("language") language: String? = "id-US"
     ): MovieListDTO
 
     @GET("movie/{movie_id}?&append_to_response=credits,videos,images,recommendations,external_ids")

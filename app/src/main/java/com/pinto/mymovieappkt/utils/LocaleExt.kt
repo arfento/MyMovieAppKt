@@ -22,7 +22,7 @@ fun Context.recreateTask() {
 
 class LocaleUtils{
     companion object {
-        val supportedLocales = listOf("en", "in")
+        val supportedLocales = listOf("en", "id")
         const val OPTION_PHONE_LANGUAGE = "sys"
 
         fun getLocaleFromPrefCode(prefCode: String): Locale {

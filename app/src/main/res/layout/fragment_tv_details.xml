@@ -501,10 +501,11 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        style="@style/TitleParent"
                         expand="@{elSeason}"
                         expandIcon="@{ivExpandSeason}"
-                        isVisible="@{viewModel.details.numberOfSeasons != 0}">
+                        isVisible="@{viewModel.details.numberOfSeasons != 0}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/season"
@@ -516,8 +517,10 @@
                         <TextView
                             style="@style/ListItemCount"
                             android:text="@{@string/item_count(viewModel.details.numberOfSeasons)}"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintBottom_toTopOf="@id/elSeason"
-                            app:layout_constraintStart_toEndOf="@id/season" />
+                            app:layout_constraintStart_toEndOf="@id/season"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
                             android:id="@+id/ivExpandSeason"

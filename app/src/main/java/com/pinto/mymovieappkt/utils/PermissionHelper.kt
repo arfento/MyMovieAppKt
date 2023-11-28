@@ -12,7 +12,7 @@ import com.pinto.mymovieappkt.R
 fun Context.unAvailableFeature(
     permission: String,
     permissionUnavailableMessage: String,
-    permissionLauncher: ActivityResultLauncher<String>
+    permissionLauncher: ActivityResultLauncher<String>,
 ) {
     MaterialAlertDialogBuilder(this)
         .setTitle(getString(R.string.unavilable))
@@ -29,7 +29,7 @@ fun Context.unAvailableFeature(
 
 fun Context.permissionExplanation(
     permissionNeededMessage: String,
-    positiveButtonFunction: () -> Unit
+    positiveButtonFunction: () -> Unit,
 ) {
     MaterialAlertDialogBuilder(this)
         .setTitle(getString(R.string.permission_needed))
@@ -46,23 +46,28 @@ fun Context.permissionExplanation(
         .show()
 }
 
-fun Context.checkmPermission(
+fun Context.checkPermission(
     fragment: Fragment,
     permission: String,
     ifGrantedFunction: () -> Unit,
     permissionNeededMessage: String,
-    permissionLauncher: ActivityResultLauncher<String>
+    permissionLauncher: ActivityResultLauncher<String>,
 ) {
 
     when {
-        ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED -> {
+        ActivityCompat.checkSelfPermission(
+            this,
+            permission
+        ) == PackageManager.PERMISSION_GRANTED -> {
             ifGrantedFunction()
         }
+
         fragment.shouldShowRequestPermissionRationale(permission) -> {
             permissionExplanation(permissionNeededMessage) {
                 permissionLauncher.launch(permission)
             }
         }
+
         else -> {
             permissionLauncher.launch(permission)
         }

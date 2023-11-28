@@ -1,6 +1,7 @@
 package com.pinto.mymovieappkt.presentation.screen.home.movie_explore
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.databinding.FragmentMovieExploreBinding
 import com.pinto.mymovieappkt.presentation.adapter.MovieAdapter
 import com.pinto.mymovieappkt.presentation.base.BaseFragment
-import com.pinto.mymovieappkt.utils.playYouTubeVideo
+import com.pinto.mymovieappkt.presentation.screen.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -116,12 +118,22 @@ class MovieExploreFragment :
 
 
     private fun playTrailer(movieId: Int) {
+
         val videoKey = viewModel.getTrendingMovieTrailerKey(movieId)
+        Log.d("url movieId", "message url movie: playTrailer $movieId , ${videoKey}")
         if (videoKey.isEmpty()) showSnackbar(
             message = getString(R.string.trending_trailer_error),
             indefinite = false,
             anchor = true
-        ) else playYouTubeVideo(videoKey)
+        ) else {
+//            playYouTubeVideo(videoKey)
+
+            val action =
+                HomeFragmentDirections.actionHomeFragmentToVideoFragment2(
+                    videoKey
+                )
+            findNavController().navigate(action)
+        }
 
     }
 

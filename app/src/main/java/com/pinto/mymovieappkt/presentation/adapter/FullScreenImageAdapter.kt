@@ -1,7 +1,5 @@
 package com.pinto.mymovieappkt.presentation.adapter
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -35,13 +33,7 @@ class FullScreenImageAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.view.apply {
             image = getItem(position)
-            buttonDownload.setOnClickListener {
-                Log.d(TAG, "button download clicked")
-//                showSnackbar(
-//                    message = getString(R.string.trending_trailer_error),
-//                    indefinite = false,
-//                    anchor = true
-            }
+
         }
     }
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.pinto.mymovieappkt.R
@@ -22,7 +23,6 @@ import com.pinto.mymovieappkt.presentation.base.BaseFragment
 import com.pinto.mymovieappkt.utils.Constants
 import com.pinto.mymovieappkt.utils.Content
 import com.pinto.mymovieappkt.utils.Detail
-import com.pinto.mymovieappkt.utils.playYouTubeVideo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -97,7 +97,11 @@ class SeeAllFragment : BaseFragment<FragmentSeeAllBinding>(R.layout.fragment_see
             when (contentType) {
                 Content.VIDEOS -> {
                 VideoAdapter(true) { videoKey ->
-                    playYouTubeVideo(videoKey)
+                    val action =
+                        SeeAllFragmentDirections.actionSeeAllFragmentToVideoFragment(
+                            videoKey
+                        )
+                    findNavController().navigate(action)
                 }.apply {
                     submitList(videoList)
                 }

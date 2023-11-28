@@ -3,17 +3,13 @@ package com.pinto.mymovieappkt.utils
 import android.content.Context
 import android.graphics.Color
 import android.os.Parcelable
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.google.android.youtube.player.YouTubeStandalonePlayer
-import com.pinto.mymovieappkt.BuildConfig
 import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.domain.model.Genre
 import java.text.DecimalFormat
@@ -22,20 +18,6 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import kotlin.math.roundToInt
 
-fun Fragment.playYouTubeVideo(videoKey: String) {
-    Log.d(tag, "playYouTubeVideo : $videoKey")
-
-    startActivity(
-        YouTubeStandalonePlayer.createVideoIntent(
-            requireActivity(),
-            BuildConfig.YOUTUBE_API_KEY,
-            videoKey,
-            0, // start millisecond
-            true, // autoplay
-            false // lightbox mode
-        )
-    )
-}
 
 fun ChipGroup.setGenreChips(
     genres: List<Genre>,
