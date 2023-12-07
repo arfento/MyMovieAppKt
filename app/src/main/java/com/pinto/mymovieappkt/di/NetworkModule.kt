@@ -64,7 +64,7 @@ object NetworkModule {
                 .url()
                 .newBuilder()
                 .addQueryParameter("api_key", BuildConfig.TMDB_API_KEY)
-                .addQueryParameter("language", QUERY_LANGUAGE)
+//                .addQueryParameter("language", QUERY_LANGUAGE)
                 .addQueryParameter("include_image_language", IMAGE_LANGUAGE)
                 .build()
 

@@ -18,7 +18,6 @@ import com.pinto.mymovieappkt.utils.Constants.DARK
 import com.pinto.mymovieappkt.utils.Constants.LANG_PREF
 import com.pinto.mymovieappkt.utils.Constants.LIGHT
 import com.pinto.mymovieappkt.utils.SharedPreferencesHelper
-import com.pinto.mymovieappkt.utils.recreateTask
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -29,7 +28,7 @@ class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
-    private val locales = arrayOf("Indonesian", "English")
+    private val locales = arrayOf("Indonesian", "English", "German")
 
     @Inject
     lateinit var preferencesHelper: SharedPreferencesHelper
@@ -81,17 +80,23 @@ class SettingsFragment : Fragment() {
         builder.setSingleChoiceItems(locales, currentLang) { _, which ->
             when (which) {
                 0 -> {
-                    val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("id")
+                    val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("in")
                     AppCompatDelegate.setApplicationLocales(appLocale)
                     preferencesHelper.save(LANG_PREF, 0)
-                    requireActivity().recreateTask()
+                    requireActivity().recreate()
                 }
 
                 1 -> {
                     val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("en")
                     AppCompatDelegate.setApplicationLocales(appLocale)
                     preferencesHelper.save(LANG_PREF, 1)
-                    requireActivity().recreateTask()
+                    requireActivity().recreate()
+                }
+                2 -> {
+                    val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("de")
+                    AppCompatDelegate.setApplicationLocales(appLocale)
+                    preferencesHelper.save(LANG_PREF, 2)
+                    requireActivity().recreate()
                 }
             }
         }

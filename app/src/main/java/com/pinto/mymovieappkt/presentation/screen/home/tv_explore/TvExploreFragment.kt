@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.widget.AdapterView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.databinding.FragmentTvExploreBinding
 import com.pinto.mymovieappkt.presentation.adapter.TvAdapter
 import com.pinto.mymovieappkt.presentation.base.BaseFragment
-import com.pinto.mymovieappkt.presentation.screen.home.HomeFragmentDirections
 import com.pinto.mymovieappkt.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -54,12 +54,12 @@ class TvExploreFragment : BaseFragment<FragmentTvExploreBinding>(R.layout.fragme
             indefinite = false,
             anchor = true
         ) else {
-//            playYouTubeVideo(videoKey)
-            val action =
-                HomeFragmentDirections.actionHomeFragmentToVideoFragment2(
-                    videoKey
-                )
-            findNavController().navigate(action)
+            val bundle = bundleOf(
+                Constants.VIDEO_URL to videoKey,
+            )
+
+            findNavController()
+                .navigate(R.id.action_global_videoFragment, bundle)
         }
     }
 

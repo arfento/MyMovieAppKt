@@ -14,33 +14,37 @@ interface MovieApi {
         @Path("list_id") listId: String,
         @Query("page") page: Int,
         @Query("region") region: String?,
-        @Query("language") language: String? = "id-US"
+        @Query("language") language: String? = "en-US"
     ): MovieListDTO
 
     @GET("trending/movie/week")
-    suspend fun getTrendingMovies(): MovieListDTO
+    suspend fun getTrendingMovies(
+        @Query("language") language: String? = "en-US"
+    ): MovieListDTO
 
     @GET("movie/{movie_id}/videos")
     suspend fun getTrendingMovieTrailers(
-        @Path("movie_id") movieId: Int
+        @Path("movie_id") movieId: Int,
+        @Query("language") language: String? = "en-US"
     ): VideoListDTO
 
     @GET("discover/movie")
     suspend fun getMoviesByGenre(
         @Query("with_genres") genreId: Int,
         @Query("page") page: Int,
-        @Query("language") language: String? = "id-US"
+        @Query("language") language: String? = "en-US"
     ): MovieListDTO
 
     @GET("search/movie")
     suspend fun getMovieSearchResults(
         @Query("query") query: String,
         @Query("page") page: Int,
-        @Query("language") language: String? = "id-US"
+        @Query("language") language: String? = "en-US"
     ): MovieListDTO
 
     @GET("movie/{movie_id}?&append_to_response=credits,videos,images,recommendations,external_ids")
     suspend fun getMovieDetails(
-        @Path("movie_id") movieId: Int
+        @Path("movie_id") movieId: Int,
+        @Query("language") language: String? = "en-US"
     ): MovieDetailDTO
 }

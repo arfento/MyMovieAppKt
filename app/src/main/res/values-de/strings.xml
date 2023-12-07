@@ -1,0 +1,239 @@
+<resources>
+    <string name="app_name">Movie App</string>
+
+    <string name="title_bottom_nav_bar_1">Startseite</string>
+    <string name="title_bottom_nav_bar_2">Suche</string>
+    <string name="title_bottom_nav_bar_3">Lieblings</string>
+    <string name="title_bottom_nav_bar_4">Einstellungen</string>
+
+    <string name="tab_title_1">Filme</string>
+    <string name="tab_title_2">Fernsehshows</string>
+
+    <string name="button_see_all">Alle Sehen</string>
+
+    <string name="title_trending">Diese Woche im Trend</string>
+    <string name="title_popular_movies">Populäre Filme</string>
+    <string name="title_top_rated_movies">Bestbewertete Filme</string>
+    <string name="title_in_theatres">In Theatern</string>
+    <string name="title_upcoming_movies">Bevorstehende Filme</string>
+
+    <string name="trending_trailer_button">Anhänger ansehen</string>
+    <string name="trending_trailer_error">Kein Anhänger gefunden</string>
+
+    <string name="title_popular_tvs">Populäre Fernsehsendungen</string>
+    <string name="title_top_rated_tvs">Bestbewertete Fernsehsendungen</string>
+    <string name="title_airing_tvs">Lüftung</string>
+    <string name="title_airing_day">Heute</string>
+    <string name="title_airing_week">Diese Woche</string>
+
+    <string name="title_genres">Genres</string>
+    <string name="title_movies">FILME</string>
+    <string name="title_tv_shows">Fernsehshows</string>
+    <string name="title_people">Gießen</string>
+
+    <string name="bullet_point">•</string>
+    <string name="thousand_separator">,</string>
+
+    <string name="hour_short">std</string>
+    <string name="minute_short">min</string>
+
+    <string name="detail_summary">Zusammenfassung</string>
+    <string name="detail_director">Regisseur</string>
+    <string name="detail_writers">Schriftsteller</string>
+    <string name="detail_title_trailers">Anhänger</string>
+    <string name="detail_title_cast">Gießen</string>
+    <string name="detail_title_images">Bilder</string>
+    <string name="detail_title_details">Einzelheiten</string>
+    <string name="detail_title_recommended_movies">Empfohlene Filme</string>
+    <string name="detail_title_networks">Netzwerke</string>
+
+    <string name="detail_original_title">Originaler Titel</string>
+    <string name="detail_release_date">Datum der Veröffentlichung</string>
+    <string name="detail_runtime">Runtime</string>
+    <string name="detail_vote_count">Auszählung der Benutzerabstimmungen</string>
+    <string name="detail_vote_average">Benutzer-Bewertung</string>
+    <string name="detail_spoken_language">Gesprochene Sprache</string>
+    <string name="detail_budget">Haushalt</string>
+    <string name="detail_revenue">Einnahmen</string>
+    <string name="detail_production_company">Produktionsfirma</string>
+    <string name="detail_production_country">Produktionsland</string>
+    <string name="detail_status">Status</string>
+    <string name="detail_genre">Das Genre</string>
+
+    <string name="detail_creators">Schöpfer</string>
+    <string name="detail_title_seasons">Staffeln</string>
+    <string name="detail_title_recommended_tvs">Empfehlungen Fernsehshows</string>
+    <string name="detail_title_next_episode">Nächste Episode</string>
+    <string name="detail_body_next_episode">Saison %d, Episode %d</string>
+
+    <string name="detail_first_air_date">Veröffentlichungsdatum der ersten Episode</string>
+    <string name="detail_last_air_date">Veröffentlichungsdatum der letzten Episode</string>
+    <string name="detail_episode_runtime">Laufzeit der Episode</string>
+    <string name="detail_in_production">In Produktion</string>
+    <string name="detail_networks">Verfügbar auf</string>
+    <string name="detail_season_episodes">%d Episoden</string>
+
+    <string name="detail_season_and_episode_number">S%dE%d</string>
+    <string name="detail_title_episodes">Episoden</string>
+    <string name="detail_title_guest_stars">Gaststars</string>
+
+    <string name="detail_title_movie_credits">Filme</string>
+    <string name="detail_title_tv_credits">Fernsehshows</string>
+    <string name="title_as_cast">Als Besetzung</string>
+    <string name="title_as_crew">Als Besatzung</string>
+
+    <string name="detail_birthday">Geburtstag</string>
+    <string name="detail_current_age">" (%d Jahre alt)"</string>
+    <string name="detail_birthplace">Geburtsort</string>
+    <string name="detail_biography">Biografie</string>
+    <string name="detail_deathday">Todestag</string>
+    <string name="detail_death_age">" (im Alter von %d)"</string>
+    <string name="detail_gender">Geschlecht</string>
+    <string name="detail_job">Bekannt für</string>
+    <string name="detail_also_known_as">Auch bekannt als</string>
+
+    <string name="gender_female">Weiblich</string>
+    <string name="gender_male">Männlich</string>
+    <string name="gender_non_binary">Nicht-binär</string>
+
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+
+    <string name="n_a">N/A</string>
+
+    <string name="empty_favorites_list_movie">Die Liste Ihrer Lieblingsfilme ist leer</string>
+    <string name="empty_favorites_list_tv">Die Liste Ihrer Lieblings-TV-Sendungen ist leer</string>
+
+    <string name="snackbar_removed_item">Von den Favoriten entfernt</string>
+    <string name="snackbar_action_undo">UNDO</string>
+
+    <string name="error_connection">Daten können nicht abgerufen werden, bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.</string>
+    <string name="error_service">Der API-Dienst antwortet im Moment nicht, bitte versuchen Sie es später noch einmal.</string>
+    <string name="error_unknown">Unbekannter Fehler aufgetreten.</string>
+    <string name="button_retry">RÜCKKEHR</string>
+
+    <string name="tmdb_attribution_title">Zuschreibung</string>
+    <string name="tmdb_attribution_message">Dieses Produkt verwendet die TMDB-API, wird aber nicht von TMDB unterstützt oder zertifiziert.</string>
+    <string name="tmdb_attribution_button_text">GOT IT</string>
+
+    <string name="item_count">" (%d)"</string>
+    <string name="item_count_s">" (%s)"</string>
+    <string name="title_see_all_search">\"%s\" (%d)</string>
+
+    <string name="genre_action">Action</string>
+    <string name="genre_action_adventure"><![CDATA[Action & Adventure]]></string>
+    <string name="genre_adventure">Abenteuer</string>
+    <string name="genre_animation">Animation</string>
+    <string name="genre_comedy">Komödie</string>
+    <string name="genre_crime">Krimi</string>
+    <string name="genre_documentary">Dokumentarfilm</string>
+    <string name="genre_drama">Drama</string>
+    <string name="genre_family">Familie</string>
+    <string name="genre_fantasy">Fantasy</string>
+    <string name="genre_history">Historie</string>
+    <string name="genre_horror">Horror</string>
+    <string name="genre_kids">Kids</string>
+    <string name="genre_music">Musik</string>
+    <string name="genre_mystery">Mystery</string>
+    <string name="genre_news">Liebesfilm</string>
+    <string name="genre_reality">Reality</string>
+    <string name="genre_romance">Romance</string>
+    <string name="genre_science_fiction">Science Fiction</string>
+    <string name="genre_scifi_fantasy"><![CDATA[Sci-Fi & Fantasy]]></string>
+    <string name="genre_soap">Soap</string>
+    <string name="genre_talk">Talk</string>
+    <string name="genre_tv_movie">TV Movie</string>
+    <string name="genre_thriller">Thriller</string>
+    <string name="genre_war">Kriegsfilm</string>
+    <string name="genre_war_politics"><![CDATA[War & Politics]]></string>
+    <string name="genre_western">Western</string>
+
+    <string name="search_query_hint">Suchen Sie nach Filmen, Fernsehsendungen oder Besetzungen</string>
+
+    <string name="select_region">Select a region</string>
+    <string name="argentina">Argentina,AR</string>
+    <string name="australia">Australia,AU</string>
+    <string name="austria">Austria,AT</string>
+    <string name="azerbaijan">Azerbaijan,Az</string>
+    <string name="bangladesh">Bangladesh,BG</string>
+    <string name="belgium">Belgium,BE</string>
+    <string name="brazil">Brazil,BR</string>
+    <string name="bulgaria">Bulgaria,BG</string>
+    <string name="cambodia">Cambodia,KH</string>
+    <string name="canada">Canada,CA</string>
+    <string name="china">China,CN</string>
+    <string name="costa_rica">Costa Rica,CR</string>
+    <string name="croatia">Croatia,HR</string>
+    <string name="czechia">Czechia,CZ</string>
+    <string name="denmark">Denmark,DK</string>
+    <string name="egypt">Egypt,EG</string>
+    <string name="estonia">Estonia,EE</string>
+    <string name="finland">Finland,FI</string>
+    <string name="france">France,FR</string>
+    <string name="germany">Germany,DE</string>
+    <string name="greece">Greece,GR</string>
+    <string name="hong_kong">Hong Kong,HK</string>
+    <string name="hungary">Hungary,HU</string>
+    <string name="iceland">Iceland,IS</string>
+    <string name="india">India,IN</string>
+    <string name="indonesia">Indonesia,ID</string>
+    <string name="iran">Iran,IR</string>
+    <string name="ireland">Ireland,IE</string>
+    <string name="israel">Israel,IL</string>
+    <string name="italy">Italy,IT</string>
+    <string name="japan">Japan,JP</string>
+    <string name="latvia">Latvia,LV</string>
+    <string name="lebanon">Lebanon,LB</string>
+    <string name="liberia">Liberia,LR</string>
+    <string name="lithuania">Lithuania,LT</string>
+    <string name="malaysia">Malaysia,MY</string>
+    <string name="mexico">Mexico,MX</string>
+    <string name="mongolia">Mongolia,MN</string>
+    <string name="morocco">Morocco,MA</string>
+    <string name="nepal">Nepal,NP</string>
+    <string name="netherlands">Netherlands,NL</string>
+    <string name="new_zealand">New Zealand,NZ</string>
+    <string name="norway">Norway,NO</string>
+    <string name="pakistan">Pakistan,PK</string>
+    <string name="peru">Peru,PE</string>
+    <string name="philippines">Philippines,PH</string>
+    <string name="poland">Poland,PL</string>
+    <string name="portugal">Portugal,PT</string>
+    <string name="puerto_rico">Puerto Rico,PR</string>
+    <string name="romania">Romania,RO</string>
+    <string name="russia">Russia,RU</string>
+    <string name="singapore">Singapore,SG</string>
+    <string name="slovakia">Slovakia,SK</string>
+    <string name="south_korea">South Korea,KR</string>
+    <string name="spain">Spain,ES</string>
+    <string name="sweden">Sweden,SE</string>
+    <string name="switzerland">Switzerland,CH</string>
+    <string name="taiwan">Taiwan,TW</string>
+    <string name="thailand">Thailand,TH</string>
+    <string name="turkey">Turkey,TR</string>
+    <string name="ukraine">Ukraine,UA</string>
+    <string name="united_arab_emirates">United Arab Emirates,AE</string>
+    <string name="united_kingdom">United Kingdom,GB</string>
+    <string name="united_states">United States,US</string>
+    <string name="uruguay">Uruguay,UY</string>
+    <string name="vietnam">Vietnam,VN</string>
+
+    <string name="light">Licht Thema</string>
+    <string name="dark">Dunkles Thema</string>
+    <string name="battery_saver">Batteriesparer</string>
+    <string name="download">Herunterladen</string>
+    <string name="settings">Einstellungen</string>
+    <string name="theme">Thema</string>
+    <string name="language">Sprache</string>
+    <string name="englishLocale">Englisch</string>
+    <string name="indonesiaLocale">Indonesisch</string>
+
+    <string name="follow_system">System verfolgen</string>
+    <string name="unavilable">Nicht verfügbare Funktion</string>
+    <string name="grant">Erlaubnis erteilen</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="permission_needed">Erlaubnis erforderlich</string>
+    <string name="ok">OK</string>
+    <string name="no_thanks">Nein danke</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

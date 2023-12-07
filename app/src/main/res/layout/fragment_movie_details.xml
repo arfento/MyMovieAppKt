@@ -191,127 +191,6 @@
                         tools:text="Writers" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        style="@style/TitleParent"
-                        isVisible="@{!viewModel.details.videos.filterVideos(false).empty}">
-
-                        <TextView
-                            android:id="@+id/videos"
-                            style="@style/Title"
-                            android:text="@string/detail_title_trailers"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            style="@style/ListItemCount"
-                            android:text="@{@string/item_count(viewModel.details.videos.filterVideos(false).size())}"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/videos"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-
-                        <TextView
-                            style="@style/SeeAll"
-                            backgroundColor="@{fragment.backgroundColor}"
-                            contentType="@{Content.VIDEOS}"
-                            isVisible="@{viewModel.details.videos.filterVideos(false).size() > 2}"
-                            title="@{@string/detail_title_trailers + @string/item_count(viewModel.details.videos.filterVideos(false).size())}"
-                            videoList="@{viewModel.details.videos.filterVideos(false)}"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvVideos"
-                        style="@style/RecyclerView"
-                        isVisible="@{!viewModel.details.videos.filterVideos(false).empty}"
-                        android:adapter="@{fragment.adapterVideos}" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        style="@style/TitleParent"
-                        isVisible="@{!viewModel.details.credits.cast.empty}">
-
-                        <TextView
-                            android:id="@+id/cast"
-                            style="@style/Title"
-                            android:text="@string/detail_title_cast"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            style="@style/ListItemCount"
-                            android:text="@{@string/item_count(viewModel.details.credits.cast.size())}"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/cast"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-
-                        <TextView
-                            style="@style/SeeAll"
-                            backgroundColor="@{fragment.backgroundColor}"
-                            castList="@{viewModel.details.credits.cast}"
-                            contentType="@{Content.CAST}"
-                            isVisible="@{viewModel.details.credits.cast.size() > 3}"
-                            title="@{@string/detail_title_cast + @string/item_count(viewModel.details.credits.cast.size())}"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvCast"
-                        style="@style/RecyclerView"
-                        isVisible="@{!viewModel.details.credits.cast.empty}"
-                        android:adapter="@{fragment.adapterCast}" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        style="@style/TitleParent"
-                        isVisible="@{!viewModel.details.images.backdrops.empty}">
-
-                        <TextView
-                            android:id="@+id/image"
-                            style="@style/Title"
-                            android:text="@string/detail_title_images"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            style="@style/ListItemCount"
-                            android:text="@{@string/item_count(viewModel.details.images.backdrops.size())}"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/image"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-
-                        <TextView
-                            style="@style/SeeAll"
-                            backgroundColor="@{fragment.backgroundColor}"
-                            contentType="@{Content.IMAGES}"
-                            imageList="@{viewModel.details.images.backdrops}"
-                            isVisible="@{viewModel.details.images.backdrops.size() > 1}"
-                            seeAllDetailType="@{Detail.MOVIE}"
-                            title="@{@string/detail_title_images + @string/item_count(viewModel.details.images.backdrops.size())}"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvImage"
-                        style="@style/RecyclerView"
-                        fixedSize="@{true}"
-                        isVisible="@{!viewModel.details.images.backdrops.empty}"
-                        android:adapter="@{fragment.adapterImages}" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
                         expand="@{expandableLayout}"
                         expandIcon="@{ivExpand}"
                         android:layout_width="match_parent"
@@ -465,6 +344,127 @@
 
                         </net.cachapa.expandablelayout.ExpandableLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.details.videos.filterVideos(false).empty}">
+
+                        <TextView
+                            android:id="@+id/videos"
+                            style="@style/Title"
+                            android:text="@string/detail_title_trailers"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.details.videos.filterVideos(false).size())}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/videos"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{fragment.backgroundColor}"
+                            contentType="@{Content.VIDEOS}"
+                            isVisible="@{viewModel.details.videos.filterVideos(false).size() > 2}"
+                            title="@{@string/detail_title_trailers + @string/item_count(viewModel.details.videos.filterVideos(false).size())}"
+                            videoList="@{viewModel.details.videos.filterVideos(false)}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVideos"
+                        style="@style/RecyclerView"
+                        isVisible="@{!viewModel.details.videos.filterVideos(false).empty}"
+                        android:adapter="@{fragment.adapterVideos}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.details.credits.cast.empty}">
+
+                        <TextView
+                            android:id="@+id/cast"
+                            style="@style/Title"
+                            android:text="@string/detail_title_cast"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.details.credits.cast.size())}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/cast"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{fragment.backgroundColor}"
+                            castList="@{viewModel.details.credits.cast}"
+                            contentType="@{Content.CAST}"
+                            isVisible="@{viewModel.details.credits.cast.size() > 3}"
+                            title="@{@string/detail_title_cast + @string/item_count(viewModel.details.credits.cast.size())}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCast"
+                        style="@style/RecyclerView"
+                        isVisible="@{!viewModel.details.credits.cast.empty}"
+                        android:adapter="@{fragment.adapterCast}" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/TitleParent"
+                        isVisible="@{!viewModel.details.images.backdrops.empty}">
+
+                        <TextView
+                            android:id="@+id/image"
+                            style="@style/Title"
+                            android:text="@string/detail_title_images"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/ListItemCount"
+                            android:text="@{@string/item_count(viewModel.details.images.backdrops.size())}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/image"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <TextView
+                            style="@style/SeeAll"
+                            backgroundColor="@{fragment.backgroundColor}"
+                            contentType="@{Content.IMAGES}"
+                            imageList="@{viewModel.details.images.backdrops}"
+                            isVisible="@{viewModel.details.images.backdrops.size() > 1}"
+                            seeAllDetailType="@{Detail.MOVIE}"
+                            title="@{@string/detail_title_images + @string/item_count(viewModel.details.images.backdrops.size())}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvImage"
+                        style="@style/RecyclerView"
+                        fixedSize="@{true}"
+                        isVisible="@{!viewModel.details.images.backdrops.empty}"
+                        android:adapter="@{fragment.adapterImages}" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         style="@style/TitleParent"

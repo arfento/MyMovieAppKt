@@ -27,7 +27,7 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>(R.layout.fragment_video
 
     override val viewModel: BaseViewModel?
         get() = null
-    private val args by navArgs<VideoFragmentArgs>()
+    private val args : VideoFragmentArgs by navArgs()
 
     private val urlsList = mutableListOf<String>()
 
@@ -52,27 +52,34 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>(R.layout.fragment_video
     @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
     private fun initForVideo() {
         urlsList.clear()
+        Log.d("url image", "message url image: vpImages ${args.url}, $urlsList")
 
         args.url.split("**").forEach { urlsList.add(it) }
         player?.also {
             binding.playerView.player = it
         }
-        Log.d("url image", "message url image: vpImages ${args.url}, $urlsList")
         val mediaSources = mutableListOf<MediaSource>()
         urlsList.forEach {
             viewLifecycleOwner.lifecycleScope.launch {
-                val ytFiles = YTExtractor(requireContext()).getYtFile(it)
-                val streamUrl = ytFiles?.get(22)?.url
-                val video = ProgressiveMediaSource.Factory(DefaultHttpDataSource.Factory())
-                    .createMediaSource(MediaItem.fromUri(streamUrl!!))
-                mediaSources.add(video)
-                player?.addMediaSource(video)
+                try {
+                    val ytFiles = YTExtractor(requireContext()).getYtFile(it)
+                    val streamUrl = ytFiles?.get(22)?.url
+                    val video = ProgressiveMediaSource.Factory(DefaultHttpDataSource.Factory())
+                        .createMediaSource(MediaItem.fromUri(streamUrl!!))
+                    mediaSources.add(video)
+                    player?.addMediaSource(video)
+                } catch (e: Exception) {
+                    // Handle the error here
+                    // For example, log the error or show a message to the user
+                    e.printStackTrace()
+                }
             }
         }
         player?.playWhenReady = playWhenReady
         player?.prepare()
 
     }
+
 
     private fun releasePlayer() {
         player?.let { player ->
@@ -108,6 +115,7 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>(R.layout.fragment_video
         super.onStop()
         releasePlayer()
     }
+
     private fun hideSystemUi() {
         WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
         WindowInsetsControllerCompat(

@@ -3,6 +3,7 @@ package com.pinto.mymovieappkt.presentation.screen.see_all
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -97,11 +98,12 @@ class SeeAllFragment : BaseFragment<FragmentSeeAllBinding>(R.layout.fragment_see
             when (contentType) {
                 Content.VIDEOS -> {
                 VideoAdapter(true) { videoKey ->
-                    val action =
-                        SeeAllFragmentDirections.actionSeeAllFragmentToVideoFragment(
-                            videoKey
-                        )
-                    findNavController().navigate(action)
+                    val bundle = bundleOf(
+                        Constants.VIDEO_URL to videoKey,
+                    )
+
+                    findNavController()
+                        .navigate(R.id.action_global_videoFragment, bundle)
                 }.apply {
                     submitList(videoList)
                 }

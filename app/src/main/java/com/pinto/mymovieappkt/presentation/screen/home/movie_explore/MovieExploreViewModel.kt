@@ -61,6 +61,7 @@ class MovieExploreViewModel @Inject constructor(
                     fetchList()
                     fetchList(Constants.LIST_ID_POPULAR)
                     fetchList(Constants.LIST_ID_TOP_RATED)
+                    fetchList(Constants.LIST_ID_NOW_PLAYING)
                     fetchList(Constants.LIST_ID_UPCOMING)
                 }
             }

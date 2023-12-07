@@ -16,6 +16,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -24,7 +25,9 @@ import com.pinto.mymovieappkt.R
 import com.pinto.mymovieappkt.databinding.ActivityMainBinding
 import com.pinto.mymovieappkt.utils.Constants
 import com.pinto.mymovieappkt.utils.Constants.DARK
+import com.pinto.mymovieappkt.utils.Constants.IS_FIRST_LAUNCH
 import com.pinto.mymovieappkt.utils.Constants.LIGHT
+import com.pinto.mymovieappkt.utils.Constants.LOCALE_KEY
 import com.pinto.mymovieappkt.utils.LocaleUtils
 import com.pinto.mymovieappkt.utils.SharedPreferencesHelper
 import com.pinto.mymovieappkt.utils.Storage
@@ -143,17 +146,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getIsFirstLaunch(): Boolean = runBlocking {
-        dataStore.data.first()[PreferencesKey.IS_FIRST_LAUNCH] ?: true
+        dataStore.data.first()[PreferencesKey.is_first_launch] ?: true
     }
 
     private fun setIsFirstLaunch(): Unit = runBlocking {
         dataStore.edit { preferences ->
-            preferences[PreferencesKey.IS_FIRST_LAUNCH] = false
+            preferences[PreferencesKey.is_first_launch] = false
         }
     }
 
     private object PreferencesKey {
-        val IS_FIRST_LAUNCH = booleanPreferencesKey("is_first_launch")
+        val is_first_launch = booleanPreferencesKey(IS_FIRST_LAUNCH)
+        val localeKey = stringPreferencesKey(LOCALE_KEY)
 
     }
 

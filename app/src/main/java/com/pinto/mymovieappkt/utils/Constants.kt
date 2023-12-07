@@ -38,7 +38,10 @@ object Constants {
     const val DARK = 5
     const val LIGHT = 6
     const val LANG_PREF = "langPref"
+    const val LOCALE_KEY = "locale_key"
 
-    const val VIDEO_URL = "videoUrl"
+    const val VIDEO_URL = "url"
+    const val USER_PREFERENCES = "user_preferences"
+    const val IS_FIRST_LAUNCH = "is_first_launch"
 
 }

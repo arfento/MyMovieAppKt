@@ -3,6 +3,7 @@ package com.pinto.mymovieappkt.presentation.screen.movie_details
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pinto.mymovieappkt.R
@@ -12,6 +13,7 @@ import com.pinto.mymovieappkt.presentation.adapter.MovieAdapter
 import com.pinto.mymovieappkt.presentation.adapter.PersonAdapter
 import com.pinto.mymovieappkt.presentation.adapter.VideoAdapter
 import com.pinto.mymovieappkt.presentation.base.BaseFragment
+import com.pinto.mymovieappkt.utils.Constants
 import com.pinto.mymovieappkt.utils.Detail
 import com.pinto.mymovieappkt.utils.setGenreChips
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,11 +26,12 @@ class MovieDetailsFragment :
 
     val adapterVideos = VideoAdapter {
         Log.d("url adapter movie detail", "message adapter movie: VideoAdapter ${it}")
-        val action =
-            MovieDetailsFragmentDirections.actionMovieDetailsFragmentToVideoFragment(
-                it
-            )
-        findNavController().navigate(action)
+        val bundle = bundleOf(
+            Constants.VIDEO_URL to it,
+        )
+
+        findNavController()
+            .navigate(R.id.action_global_videoFragment, bundle)
 //        playYouTubeVideo(it)
     }
     val adapterCast = PersonAdapter(isCast = true)

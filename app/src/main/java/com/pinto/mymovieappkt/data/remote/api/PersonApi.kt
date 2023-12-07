@@ -11,11 +11,13 @@ interface PersonApi {
     @GET("search/person")
     suspend fun getPersonSearchResults(
         @Query("query") query: String,
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("language") language: String? = "en-US"
     ): PersonListDTO
 
     @GET("person/{person_id}?&append_to_response=images,movie_credits,tv_credits,external_ids")
     suspend fun getPersonDetails(
-        @Path("person_id") personId: Int
+        @Path("person_id") personId: Int,
+        @Query("language") language: String? = "en-US"
     ): PersonDetailDTO
 }

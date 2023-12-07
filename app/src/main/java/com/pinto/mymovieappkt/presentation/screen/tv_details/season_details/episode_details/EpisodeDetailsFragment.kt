@@ -2,6 +2,7 @@ package com.pinto.mymovieappkt.presentation.screen.tv_details.season_details.epi
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pinto.mymovieappkt.R
@@ -20,11 +21,12 @@ class EpisodeDetailsFragment :
 
     override val viewModel: EpisodeDetailsViewModel by viewModels()
     val adapterVideos = VideoAdapter {
-        val action =
-            EpisodeDetailsFragmentDirections.actionEpisodeDetailsFragmentToVideoFragment(
-                it
-            )
-        findNavController().navigate(action)
+        val bundle = bundleOf(
+            Constants.VIDEO_URL to it,
+        )
+
+        findNavController()
+            .navigate(R.id.action_global_videoFragment, bundle)
     }
     val adapterCast = PersonAdapter(isCast = true)
     val adapterGuestStars = PersonAdapter(isCast = true)
